@@ -7,7 +7,7 @@ public class ObsDestroyTest : MonoBehaviour {
         StartCoroutine(Timer());
     }
 
-    // 생성된 뒤 특정 시간 경과 후 오브젝트 풀로 반납
+    // 생성된 뒤 특정 시간 경과 후 Pool로 반납
     IEnumerator Timer() {
         var wait = new WaitForSeconds(1f);
         int time = 3;
@@ -17,6 +17,6 @@ public class ObsDestroyTest : MonoBehaviour {
             yield return wait;
         }
 
-        ObstacleGenerator.instance.ReturnObs(gameObject);
+        ObstaclePool.instance.ReturnObs(gameObject);
     }
 }

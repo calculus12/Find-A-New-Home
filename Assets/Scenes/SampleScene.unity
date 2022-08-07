@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 2101306371}
   - component: {fileID: 2101306370}
   m_Layer: 0
-  m_Name: ObstacleGenerator
+  m_Name: ObstaclePool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -374,13 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220c57dcaf74b304688562461ffa9284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reefPrefab: {fileID: 2783247475761388688, guid: f24d862fe532cc94f9838b6f00a2648b, type: 3}
-  boxPrefab: {fileID: 6647200201839403336, guid: ccd4b77273b9e4f4c88cf72e10ab5e0a, type: 3}
-  canPrefab: {fileID: 7829443658702616808, guid: 9dc4b5030509f944da7701126699e394, type: 3}
-  reefCount: 20
-  boxCount: 20
-  canCount: 20
-  additionalObsCount: 5
 --- !u!4 &2101306371
 Transform:
   m_ObjectHideFlags: 0
