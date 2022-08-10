@@ -19,9 +19,10 @@ public class Movement : MonoBehaviour
     float XValue = 2f;
     private PlayerControls playerControls;
     private CharacterController mChar;
+    private Animator mAnimator;
     private float X, Y;
     private float DodgeSpeed = 10f;
-    private float JumpPower = 0.01f;
+    private float JumpPower = 0.015f;
     public bool InJump, InFall, InRoll, InRecovery;
     public SwipeManager swipeManager;
     private void Awake()
@@ -39,6 +40,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         mChar = GetComponent<CharacterController>();
+        mAnimator = GetComponent<Animator>();
         transform.position = new Vector3(0f, 0f, 0f);
         Y = 0f;
     }
@@ -52,11 +54,13 @@ public class Movement : MonoBehaviour
             {
                 mSide = SIDE.LEFT;
                 NewXPos = -XValue;
+                mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
             }
             else if (mSide == SIDE.RIGHT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
+                mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
             }
         }
         else if (playerControls.Player.Right.triggered || swipeManager.swipeDirection == Swipe.Right)
@@ -65,24 +69,27 @@ public class Movement : MonoBehaviour
             {
                 mSide = SIDE.RIGHT;
                 NewXPos = XValue;
+                mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
             }
             else if (mSide == SIDE.LEFT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
+                mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
             }
         }
 
         // 점프 및 다이빙 로직
 
         // 바다에 가까우면 y=0 및 상태 초기화 
-        if (Mathf.Abs(transform.position.y) < 0.01f)
+        if (Mathf.Abs(transform.position.y) < 0.1f)
         {
             if (InFall || InRecovery)
             {
                 Y = 0;
                 InFall = false;
                 InRecovery = false;
+                mAnimator.CrossFadeInFixedTime("Roll", 0.1f);
             }
         }
         else
@@ -133,6 +140,7 @@ public class Movement : MonoBehaviour
             InJump = true;
             InRoll = false;
             InRecovery = false;
+            mAnimator.CrossFadeInFixedTime("Fly", 0.1f);
         }
         // 현재 다이빙 중이거나 복귀 중이 아니면 입력에 따라 다이빙 실행
         else if (!(InRoll || InRecovery) && (playerControls.Player.Roll.triggered || swipeManager.swipeDirection == Swipe.Down))
@@ -141,6 +149,7 @@ public class Movement : MonoBehaviour
             InRoll = true;
             InJump = false;
             InFall = false;
+            mAnimator.CrossFadeInFixedTime("Swim", 0.1f);
         }
 
         // 캐릭터 NewXPos 및 Y에 따른 부드러운 이동
