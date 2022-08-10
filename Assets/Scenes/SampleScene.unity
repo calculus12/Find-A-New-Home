@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 1650583428}
   - component: {fileID: 1650583427}
   - component: {fileID: 1650583433}
+  - component: {fileID: 1650583434}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -559,7 +560,20 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1650583434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650583426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd43c6ac034f4bae897bdc92e4d2ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeDirection: 0
