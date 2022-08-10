@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int character { get; set; } = 0;
 
     /// <summary>
     /// 현재 상태
@@ -66,6 +68,19 @@ public class GameManager : MonoBehaviour
 
         SetState(GameState.pause);
         Time.timeScale = 0f;
+    }
+
+    public void StartGame()
+    {
+        SetState(GameState.playing);
+        SceneManager.LoadScene(1);
+    }
+
+    public void StopGame()
+    {
+        Time.timeScale = 1f;
+        SetState(GameState.start);
+        SceneManager.LoadScene(0);
     }
 
     private void Awake()
