@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int character { get; set; } = 0;
+    public int characterIndex { get; set; } = 0;
     public string characterName { get; set; } = "Penguin";
 
     /// <summary>

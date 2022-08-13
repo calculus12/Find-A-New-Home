@@ -25,8 +25,8 @@ public class CharacterSelectController : MonoBehaviour
 
     private void Start()
     {
-        currentCharacterIndex = GameManager.Instance.character;
-        tempCharacter = GameManager.Instance.character;
+        currentCharacterIndex = GameManager.Instance.characterIndex;
+        tempCharacter = GameManager.Instance.characterIndex;
 
         characters[currentCharacterIndex].SetActive(true);
     }
@@ -62,6 +62,7 @@ public class CharacterSelectController : MonoBehaviour
 
         // 게임 매니저에 캐릭터 이름을 저장해서 게임 플레이 씬으로 넘어갔을 때
         // 선택한 캐릭터를 활성화하게끔 함
+        GameManager.Instance.characterIndex = currentCharacterIndex;
         GameManager.Instance.characterName = currentCharacterName;
 
         // 현재 설정한 캐릭터 활성화
