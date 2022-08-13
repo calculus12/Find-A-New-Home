@@ -22,11 +22,17 @@ public class GameManager : MonoBehaviour
     }
 
     public int character { get; set; } = 0;
+    public string characterName { get; set; } = "Penguin";
 
     /// <summary>
     /// 현재 상태
     /// </summary>
     private GameState state = GameState.start;
+
+    public GameState GameState
+    {
+        get { return state; }
+    }
 
     /// <summary>
     /// SetState가 실행될때 실행될 event

@@ -7,10 +7,12 @@ public class CharacterSelectController : MonoBehaviour
     private List<GameObject> characters = new List<GameObject>();
 
     int tempCharacter = 0;
-    int currentCharacter = 0;
+    int currentCharacterIndex = 0;
+    string currentCharacterName = "Penguin";
 
     private void Awake()
     {
+
         Transform[] allChildren = GetComponentsInChildren<Transform>(true);
 
         int i = 0;
@@ -23,10 +25,10 @@ public class CharacterSelectController : MonoBehaviour
 
     private void Start()
     {
-        currentCharacter = GameManager.Instance.character;
+        currentCharacterIndex = GameManager.Instance.character;
         tempCharacter = GameManager.Instance.character;
 
-        characters[currentCharacter].SetActive(true);
+        characters[currentCharacterIndex].SetActive(true);
     }
 
     /// <summary>
@@ -55,9 +57,15 @@ public class CharacterSelectController : MonoBehaviour
     public void SetCharacter()
     {
         characters[tempCharacter].SetActive(false);
-        currentCharacter = tempCharacter;
-        GameManager.Instance.character = currentCharacter;
-        characters[currentCharacter].SetActive(true);
+        currentCharacterIndex = tempCharacter;
+        currentCharacterName = characters[currentCharacterIndex].name;
+
+        // 게임 매니저에 캐릭터 이름을 저장해서 게임 플레이 씬으로 넘어갔을 때
+        // 선택한 캐릭터를 활성화하게끔 함
+        GameManager.Instance.characterName = currentCharacterName;
+
+        // 현재 설정한 캐릭터 활성화
+        characters[currentCharacterIndex].SetActive(true);
     }
 
     /// <summary>
@@ -66,7 +74,7 @@ public class CharacterSelectController : MonoBehaviour
     public void CancelChange()
     {
         characters[tempCharacter].SetActive(false);
-        characters[currentCharacter].SetActive(true);
-        tempCharacter = currentCharacter;
+        characters[currentCharacterIndex].SetActive(true);
+        tempCharacter = currentCharacterIndex;
     }
 }
