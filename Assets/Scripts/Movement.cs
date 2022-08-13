@@ -47,6 +47,9 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        // 일시정지 중이면 입력 무효화
+        if (GameManager.Instance.GameState == GameState.pause) return;
+
         // 캐릭터 레일 위치에 따른 컨트롤 및 X값 설정
         if (playerControls.Player.Left.triggered || swipeManager.swipeDirection == Swipe.Left)
         {
