@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1265329914680768004}
   m_LocalRotation: {x: -0, y: 0.2925386, z: -0, w: 0.9562537}
   m_LocalPosition: {x: -4.24531, y: 0, z: 6.7689257}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8159447053713862386}
@@ -64,7 +64,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265329914680768004}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -80,7 +80,6 @@ GameObject:
   - component: {fileID: 8159447053713862386}
   - component: {fileID: 4362568542091608328}
   - component: {fileID: 3704354066307003780}
-  - component: {fileID: 9171218702301354608}
   m_Layer: 0
   m_Name: opened soda can2
   m_TagString: Untagged
@@ -153,20 +152,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &9171218702301354608
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3651812867987092925}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: 4300000, guid: a5769728cf6983b4a99296b398ea93a9, type: 3}
 --- !u!1 &8870853479609285711
 GameObject:
   m_ObjectHideFlags: 0

@@ -2066,7 +2066,7 @@ MonoBehaviour:
   count: 10
   additionalCount: 5
   endZPos: -20
-  yPos: 2.5
+  yPos: 1.5
   occupyLow: 0
   occupyMid: 1
   occupyHigh: 1
@@ -2078,7 +2078,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7123506212904339898}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
