@@ -652,6 +652,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1173357962}
     m_Modifications:
+    - target: {fileID: 424303685, guid: 13010ba8a92e1e84094704ebcf1e34cc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3237211106725336091, guid: 13010ba8a92e1e84094704ebcf1e34cc, type: 3}
       propertyPath: m_Name
       value: PolarBear
@@ -2252,6 +2256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1173357962}
     m_Modifications:
+    - target: {fileID: 1108749379, guid: 981931ef30c4eff4eaa909f3b0793909, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3702653984661215612, guid: 981931ef30c4eff4eaa909f3b0793909, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2796,6 +2804,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1173357962}
     m_Modifications:
+    - target: {fileID: 2028302251, guid: 45dd76ea3e48f1b4f9ee53f144721d54, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2947218127757345936, guid: 45dd76ea3e48f1b4f9ee53f144721d54, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -3208,6 +3220,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1173357962}
     m_Modifications:
+    - target: {fileID: 865557371, guid: add5ab1cca4ee994d9f396d44d51bc66, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6309944962466278699, guid: add5ab1cca4ee994d9f396d44d51bc66, type: 3}
       propertyPath: m_Name
       value: Penguin
