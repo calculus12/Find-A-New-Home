@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     private float DodgeSpeed = 10f;
     private float JumpPower = 0.05f;
     public bool InJump, InFall, InRoll, InRecovery;
+    private float PauseDelay;
     public SwipeManager swipeManager;
     private void Awake()
     {
@@ -43,12 +44,22 @@ public class Movement : MonoBehaviour
         mAnimator = GetComponent<Animator>();
         transform.position = new Vector3(0f, 0f, 0f);
         Y = 0f;
+        PauseDelay = 0f;
     }
 
     void Update()
     {
         // 일시정지 중이면 입력 무효화
-        if (GameManager.Instance.GameState == GameState.pause) return;
+        if (GameManager.Instance.GameState == GameState.pause)
+        {
+            PauseDelay = 0.2f;
+            return;
+        }
+        else if (PauseDelay > 0)
+        {
+            PauseDelay -= Time.deltaTime;
+            return;
+        }
 
         // 캐릭터 레일 위치에 따른 컨트롤 및 X값 설정
         if (playerControls.Player.Left.triggered || swipeManager.swipeDirection == Swipe.Left)
