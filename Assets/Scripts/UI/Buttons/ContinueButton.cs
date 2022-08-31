@@ -7,6 +7,7 @@ public class ContinueButton : MonoBehaviour, ButtonBase
 {
 
     [SerializeField] GameObject pausePanel;
+
     public void OnClicked()
     {
         GameManager.Instance.TogglePause();
