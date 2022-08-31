@@ -102,7 +102,7 @@ MonoBehaviour:
   count: 10
   additionalCount: 5
   endZPos: -20
-  yPos: -0.5
+  yPos: -1.2
   occupyLow: 1
   occupyMid: 1
   occupyHigh: 1

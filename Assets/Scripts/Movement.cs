@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
     private Animator mAnimator;
     private float X, Y;
     private float DodgeSpeed = 10f;
-    private float JumpPower = 0.05f;
+    private float JumpPower = 0.15f;
     public bool InJump, InFall, InRoll, InRecovery;
     public SwipeManager swipeManager;
     private void Awake()
