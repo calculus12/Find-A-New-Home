@@ -17,7 +17,7 @@ public class GameoverScreen : MonoBehaviour
         currentScore.text = "Á¡¼ö: " + cScore.ToString();
         earnedCoin.text = eCoin.ToString() + " coin";
 
-        int pBest = PlayerPrefs.GetInt("pBest", 0);
+        int pBest = PrefsManager.Instance.GetBestScore();
 
         previousBestScore.text = pBest.ToString();
 
@@ -26,6 +26,7 @@ public class GameoverScreen : MonoBehaviour
         if (isBest)
         {
             isBestText.SetActive(true);
+            PrefsManager.Instance.SetBestScore(cScore);
         }
         else
         {
