@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
     private Animator mAnimator;
     private float X, Y;
     private float DodgeSpeed = 10f;
-    private float JumpPower = 0.25f;
+    [SerializeField] float JumpPower = 0.25f;
     public bool InJump, InFall, InRoll, InRecovery;
     private float PauseDelay;
     public SwipeManager swipeManager;

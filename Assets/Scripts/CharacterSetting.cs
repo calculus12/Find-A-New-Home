@@ -12,7 +12,7 @@ public class CharacterSetting : MonoBehaviour
 
         // 선택된 캐릭터를 활성화
         var character = transform.Find(characterName).gameObject;
-        Debug.Log(characterName);
+        //Debug.Log(characterName);
         character.SetActive(true);
     }
 }

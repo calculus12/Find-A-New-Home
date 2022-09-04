@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         //player die function
         if(other.tag == "Obstacle"){
-            Debug.Log("面倒惯积");
+            //Debug.Log("面倒惯积");
         }
         else if (other.tag == "Coin") {
             MovingObjectPool.instance.ReturnObj(other.GetComponent<Coin>());

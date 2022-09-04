@@ -17,7 +17,7 @@ public class MapScrolling : MonoBehaviour
         // 자식 트랜스폼 가져오기
         foreach (Transform child in transform)
         {
-            Debug.Log(child.name);
+            //Debug.Log(child.name);
             children.Add(child);
         }
     }
