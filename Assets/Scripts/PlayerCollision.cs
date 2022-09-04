@@ -9,6 +9,9 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         //player die function
         if(other.tag == "Obstacle"){
+            // 게임오버 처리
+            GameManager.Instance.SetState(GameState.gameover);
+
             //Debug.Log("충돌발생");
         }
         else if (other.tag == "Coin") {
