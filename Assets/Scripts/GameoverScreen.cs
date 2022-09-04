@@ -15,7 +15,7 @@ public class GameoverScreen : MonoBehaviour
     public void SetResult(int cScore, int eCoin)
     {
         currentScore.text = "Á¡¼ö: " + cScore.ToString();
-        earnedCoin.text = eCoin.ToString() + " coin";
+        earnedCoin.text = eCoin.ToString();
 
         int pBest = PrefsManager.Instance.GetBestScore();
 
