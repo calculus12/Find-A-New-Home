@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     private float DodgeSpeed = 10f;
     [SerializeField] float JumpPower = 0.25f;
     public bool InJump, InFall, InRoll, InRecovery;
-    private float PauseDelay;
+    private float PauseDelay, DodgeDelay;
     public SwipeManager swipeManager;
     private void Awake()
     {
@@ -45,6 +45,7 @@ public class Movement : MonoBehaviour
         transform.position = new Vector3(0f, 0f, 0f);
         Y = 0f;
         PauseDelay = 0f;
+        DodgeDelay = 0f;
     }
 
     void Update()
@@ -62,19 +63,25 @@ public class Movement : MonoBehaviour
         }
 
         // 캐릭터 레일 위치에 따른 컨트롤 및 X값 설정
-        if (playerControls.Player.Left.triggered || swipeManager.swipeDirection == Swipe.Left)
+        if (DodgeDelay > 0)
+        {
+            DodgeDelay -= Time.deltaTime;
+        }
+        else if (playerControls.Player.Left.triggered || swipeManager.swipeDirection == Swipe.Left)
         {
             if (mSide == SIDE.MID)
             {
                 mSide = SIDE.LEFT;
                 NewXPos = -XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
+                DodgeDelay = 0.1f;
             }
             else if (mSide == SIDE.RIGHT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
+                DodgeDelay = 0.1f;
             }
         }
         else if (playerControls.Player.Right.triggered || swipeManager.swipeDirection == Swipe.Right)
@@ -84,12 +91,14 @@ public class Movement : MonoBehaviour
                 mSide = SIDE.RIGHT;
                 NewXPos = XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
+                DodgeDelay = 0.1f;
             }
             else if (mSide == SIDE.LEFT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
+                DodgeDelay = 0.1f;
             }
         }
 
