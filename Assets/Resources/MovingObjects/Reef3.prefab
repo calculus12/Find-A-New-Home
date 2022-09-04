@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1057095219595623939}
   m_Layer: 0
   m_Name: Reef3
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2776133295837340062}
   m_LocalRotation: {x: 0.0000000218557, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.613412, y: 0.521976, z: 46.923203}
-  m_LocalScale: {x: 1.4, y: 2.4, z: 1.4}
+  m_LocalScale: {x: 1.4, y: 5, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  speed: 0.8
+  speed: 1
   count: 10
   additionalCount: 5
   endZPos: -20
-  yPos: -1.2
+  yPos: -2.5
   occupyLow: 1
   occupyMid: 1
   occupyHigh: 1
@@ -116,7 +116,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.95431215
+  m_Radius: 0.6
   m_Height: 1.9738545
   m_Direction: 1
   m_Center: {x: -0.19001558, y: 0.7259393, z: -0.07948917}
