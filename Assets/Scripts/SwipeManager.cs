@@ -77,6 +77,6 @@ public class SwipeManager : MonoBehaviour
         {
             swipeDirection = Swipe.Right;
         }
-        Debug.Log($"Swipe: {swipeDirection}");
+        //Debug.Log($"Swipe: {swipeDirection}");
     }
 }

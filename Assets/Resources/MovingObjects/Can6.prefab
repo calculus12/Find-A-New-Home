@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4007429134853372268}
   m_Layer: 0
   m_Name: Can6
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 379262210008026267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.24531, y: 0, z: 6.7689257}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 7, y: 5, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5638789374414098366}
@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  speed: 0.8
+  speed: 1
   count: 10
   additionalCount: 5
   endZPos: -20
-  yPos: 0
+  yPos: -0.3
   occupyLow: 0
   occupyMid: 1
   occupyHigh: 0
@@ -67,8 +67,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.2, y: 0.3, z: 0.2}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1 &2602590349213953657
 GameObject:
   m_ObjectHideFlags: 0

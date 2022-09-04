@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8888580977032698210}
   m_Layer: 0
   m_Name: Can14
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 7430763217134374152}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
   m_LocalPosition: {x: -4.24531, y: 0, z: 6.7689257}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 7, y: 5, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1257128776702145459}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  speed: 0.8
+  speed: 1
   count: 10
   additionalCount: 5
   endZPos: -20
