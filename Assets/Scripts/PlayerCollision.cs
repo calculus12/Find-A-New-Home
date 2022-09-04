@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField] ScoreManager scoreManager;
     
     private void OnTriggerEnter(Collider other){
         //player die function
@@ -12,6 +13,7 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (other.tag == "Coin") {
             MovingObjectPool.instance.ReturnObj(other.GetComponent<Coin>());
+            scoreManager.IncreaseCoin();
         }
     }
 }
