@@ -89,6 +89,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SetState(GameState.playing);
+        SceneManager.LoadScene(1);
+    }
+
     private void Awake()
     {
         if (_instance == null)

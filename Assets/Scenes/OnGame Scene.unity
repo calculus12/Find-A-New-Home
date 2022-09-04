@@ -800,6 +800,7 @@ GameObject:
   - component: {fileID: 429426094}
   - component: {fileID: 429426093}
   - component: {fileID: 429426092}
+  - component: {fileID: 429426095}
   m_Layer: 5
   m_Name: Replay Button
   m_TagString: Untagged
@@ -871,7 +872,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 429426093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 429426095}
+        m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
+        m_MethodName: OnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &429426093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +923,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429426090}
   m_CullTransparentMesh: 1
+--- !u!114 &429426095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429426090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e75cf5205a2284fa790504d30ab461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &703718041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,7 +2033,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.8
+  m_fontSize: 72
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2076,7 +2101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1318583079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2823,10 +2848,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5255e6e9256b147916ff761ec52239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScore: {fileID: 0}
-  previousBestScore: {fileID: 0}
-  earnedCoin: {fileID: 0}
-  isBestText: {fileID: 0}
+  currentScore: {fileID: 44879607}
+  previousBestScore: {fileID: 129909559}
+  earnedCoin: {fileID: 821568211}
+  isBestText: {fileID: 1340011601}
 --- !u!1 &1567972089
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,7 +3239,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1655932598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1356056226}
+        m_TargetAssemblyTypeName: StopButton, Assembly-CSharp
+        m_MethodName: OnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1655932598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4490,6 +4527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 425914179}
+  gameoverScreen: {fileID: 1427970147}
 --- !u!1001 &1272093194477462406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4621,6 +4659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 425914179}
+  gameoverScreen: {fileID: 1427970147}
 --- !u!137 &1930517444052270624
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -5160,6 +5199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 425914179}
+  gameoverScreen: {fileID: 1427970147}
 --- !u!1001 &7996725930852071057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5286,3 +5326,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 425914179}
+  gameoverScreen: {fileID: 1427970147}

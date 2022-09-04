@@ -27,6 +27,8 @@ public class PlayerCollision : MonoBehaviour
             // 현재 점수, 획득 코인 결과 설정 및 UI 활성화
             gameoverScreen.GetComponent<GameoverScreen>().SetResult(scoreManager.GetScore, scoreManager.GetEarnedCoin);
             gameoverScreen.SetActive(true);
+
+            Time.timeScale = 0f; // DEBUGGING CODE
         }
         else if (other.tag == "Coin") {
             MovingObjectPool.instance.ReturnObj(other.GetComponent<Coin>());
