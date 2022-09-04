@@ -96,6 +96,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void GameoverAndSave(int curScore, int earnedCoin)
+    {
+        SetState(GameState.gameover);
+
+        // 코인 설정
+        int curCoin = PrefsManager.Instance.GetCoin();
+        PrefsManager.Instance.SetCoin(curCoin + earnedCoin);
+
+        // 최고기록 설정
+        if (curScore > PrefsManager.Instance.GetBestScore())
+        {
+            PrefsManager.Instance.SetBestScore(curScore);
+        }
+    }
+
     private void Awake()
     {
         if (_instance == null)

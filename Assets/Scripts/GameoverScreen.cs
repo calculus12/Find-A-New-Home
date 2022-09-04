@@ -26,7 +26,6 @@ public class GameoverScreen : MonoBehaviour
         if (isBest)
         {
             isBestText.SetActive(true);
-            PrefsManager.Instance.SetBestScore(cScore);
         }
         else
         {
