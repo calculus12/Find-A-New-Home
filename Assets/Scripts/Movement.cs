@@ -157,7 +157,7 @@ public class Movement : MonoBehaviour
             InRecovery = true;
         }
         // 현재 점프 중이거나 떨어지는 중이 아니면 입력에 따라 점프 실행
-        if (!(InJump || InFall) && (playerControls.Player.Jump.triggered || swipeManager.swipeDirection == Swipe.Up))
+        if (!(InJump || InFall || InRoll) && (playerControls.Player.Jump.triggered || swipeManager.swipeDirection == Swipe.Up))
         {
             Y = JumpPower;
             InJump = true;
@@ -166,7 +166,7 @@ public class Movement : MonoBehaviour
             mAnimator.CrossFadeInFixedTime("Fly", 0.1f);
         }
         // 현재 다이빙 중이거나 복귀 중이 아니면 입력에 따라 다이빙 실행
-        else if (!(InRoll || InRecovery) && (playerControls.Player.Roll.triggered || swipeManager.swipeDirection == Swipe.Down))
+        else if (!(InRoll || InRecovery || InJump) && (playerControls.Player.Roll.triggered || swipeManager.swipeDirection == Swipe.Down))
         {
             Y = -JumpPower;
             InRoll = true;
