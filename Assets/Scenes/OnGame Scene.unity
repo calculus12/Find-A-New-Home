@@ -648,7 +648,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.4
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2764,6 +2764,8 @@ GameObject:
   - component: {fileID: 1427970150}
   - component: {fileID: 1427970149}
   - component: {fileID: 1427970151}
+  - component: {fileID: 1427970152}
+  - component: {fileID: 1427970153}
   m_Layer: 5
   m_Name: Gameover Screen
   m_TagString: Untagged
@@ -2852,6 +2854,31 @@ MonoBehaviour:
   previousBestScore: {fileID: 129909559}
   earnedCoin: {fileID: 821568211}
   isBestText: {fileID: 1340011601}
+--- !u!114 &1427970152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427970147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68d6047e67df304bbae2235dc9d42ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
+--- !u!225 &1427970153
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427970147}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1453928234
 GameObject:
   m_ObjectHideFlags: 0

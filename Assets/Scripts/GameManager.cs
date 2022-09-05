@@ -96,9 +96,24 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    /// <summary>
+    /// 게임오버 처리 및 플레이어의 움직임을 비활성화 하는 함수
+    /// OnGame Scene에서만 호출되어야 한다.
+    /// </summary>
+    /// <param name="curScore">현재 점수</param>
+    /// <param name="earnedCoin">획득한 코인</param>
     public void GameoverAndSave(int curScore, int earnedCoin)
     {
         SetState(GameState.gameover);
+
+        // player의 움직임 컴포넌트를 비활성화
+        GameObject player = GameObject.FindWithTag("Player");
+        player.GetComponent<Movement>().enabled = false;
+        player.GetComponent<SwipeManager>().enabled = false;
+
+        // 장애물 생성기 비활성화
+        GameObject.Find("ObjectGenerator")?.SetActive(false);
+
 
         // 코인 설정
         int curCoin = PrefsManager.Instance.GetCoin();

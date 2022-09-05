@@ -20,17 +20,15 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         //player die function
         if(other.tag == "Obstacle"){
-            // 게임오버 처리
-            GameManager.Instance.SetState(GameState.gameover);
+            // 플레이어 게임오버 움직임
             StartCoroutine(PlayerDieMovement());
 
             // 현재 점수, 획득 코인 결과 설정 및 UI 활성화
             gameoverScreen.GetComponent<GameoverScreen>().SetResult(scoreManager.GetScore, scoreManager.GetEarnedCoin);
-            GameManager.Instance.GameoverAndSave(scoreManager.GetScore, scoreManager.GetEarnedCoin);
             gameoverScreen.SetActive(true);
+            GameManager.Instance.GameoverAndSave(scoreManager.GetScore, scoreManager.GetEarnedCoin);
 
-            Time.timeScale = 0f; // DEBUGGING CODE
-            // FADE IN 처리로 게임오버 UI가 나와야 함
+            // Player Move 스크립트 비활성화 
         }
         else if (other.tag == "Coin") {
             MovingObjectPool.instance.ReturnObj(other.GetComponent<Coin>());

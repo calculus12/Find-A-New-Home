@@ -23,13 +23,6 @@ public class GameoverScreen : MonoBehaviour
 
         isBest = cScore > pBest;
 
-        if (isBest)
-        {
-            isBestText.SetActive(true);
-        }
-        else
-        {
-            isBestText.SetActive(false);
-        }
+        isBestText.SetActive(isBest);
     }
 }
