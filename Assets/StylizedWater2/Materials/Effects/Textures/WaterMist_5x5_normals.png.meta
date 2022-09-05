@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Effects/Textures/WaterMist_5x5_normals.png.meta
 guid: 44f9dbe54fbc12d47b885d677aec1c42
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
+========
+guid: f805e88d3eaf0f046ac4ed03de5c7c3e
+TextureImporter:
+  fileIDToRecycleName: {}
+  externalObjects: {}
+  serializedVersion: 9
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Normal.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -59,7 +67,11 @@ TextureImporter:
   textureFormatSet: 0
   applyGammaDecoding: 0
   platformSettings:
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Effects/Textures/WaterMist_5x5_normals.png.meta
   - serializedVersion: 3
+========
+  - serializedVersion: 2
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Normal.png.meta
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -70,7 +82,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Effects/Textures/WaterMist_5x5_normals.png.meta
     forceMaximumCompressionQuality_BC6H_BC7: 0
+========
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Normal.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
@@ -78,12 +93,18 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Effects/Textures/WaterMist_5x5_normals.png.meta
     internalID: 0
+========
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Normal.png.meta
     vertices: []
     indices: 
     edges: []
     weights: []
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Effects/Textures/WaterMist_5x5_normals.png.meta
     secondaryTextures: []
+========
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Normal.png.meta
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

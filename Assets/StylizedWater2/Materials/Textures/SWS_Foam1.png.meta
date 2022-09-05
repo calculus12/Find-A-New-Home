@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Textures/SWS_Foam1.png.meta
 guid: 6a4aa5aa1ed7b9e4e9204a95f56f4d29
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
+========
+guid: 5e3b47c76d4c55d44be834515b7fe551
+TextureImporter:
+  fileIDToRecycleName: {}
+  externalObjects: {}
+  serializedVersion: 9
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Ambient_Occlusion.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -58,7 +66,11 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Textures/SWS_Foam1.png.meta
   - serializedVersion: 3
+========
+  - serializedVersion: 2
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Ambient_Occlusion.png.meta
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -69,7 +81,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Textures/SWS_Foam1.png.meta
     forceMaximumCompressionQuality_BC6H_BC7: 0
+========
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Ambient_Occlusion.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
@@ -77,12 +92,18 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Textures/SWS_Foam1.png.meta
     internalID: 0
+========
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Ambient_Occlusion.png.meta
     vertices: []
     indices: 
     edges: []
     weights: []
+<<<<<<<< HEAD:Assets/StylizedWater2/Materials/Textures/SWS_Foam1.png.meta
     secondaryTextures: []
+========
+>>>>>>>> main:Assets/Stylize Water Texture/Textures/Vol_36_5_Ambient_Occlusion.png.meta
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

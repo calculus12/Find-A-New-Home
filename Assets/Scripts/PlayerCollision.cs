@@ -27,8 +27,6 @@ public class PlayerCollision : MonoBehaviour
             gameoverScreen.GetComponent<GameoverScreen>().SetResult(scoreManager.GetScore, scoreManager.GetEarnedCoin);
             gameoverScreen.SetActive(true);
             GameManager.Instance.GameoverAndSave(scoreManager.GetScore, scoreManager.GetEarnedCoin);
-
-            // Player Move 스크립트 비활성화 
         }
         else if (other.tag == "Coin") {
             MovingObjectPool.instance.ReturnObj(other.GetComponent<Coin>());
