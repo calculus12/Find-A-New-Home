@@ -11,7 +11,7 @@ public class MovingObjectPool : MonoBehaviour {
     Dictionary<MovingObject, Queue<MovingObject>> getQueueByObj;
 
     void Awake() {
-        // ½Ì±ÛÅæ
+        // ì‹±ê¸€í†¤
         if (instance == null) {
             instance = this;
         }
@@ -19,7 +19,7 @@ public class MovingObjectPool : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        // objs, objQueues ±¸Á¶
+        // objs, objQueues êµ¬ì¡°
         // [0][]: ObjType1 --- [0][0]: prefab1, [0][1]: prefab2, [0][2]: prefab3
         // [1][]: ObjType2 --- [1][0]: prefab1, [1][1]: prefab2, [1][2]: prefab3
         // [2][]: ObjType3 --- [2][0]: prefab1, [2][1]: prefab2, [2][2]: prefab3
@@ -32,7 +32,7 @@ public class MovingObjectPool : MonoBehaviour {
         }
         getQueueByObj = new Dictionary<MovingObject, Queue<MovingObject>>();
 
-        // Resources/MovingObjects¿¡ ÀÖ´Â ¸ğµç MovingObject ºÒ·¯¿Í¼­ ¿ÀºêÁ§Æ® Ç® »ı¼º
+        // Resources/MovingObjectsì— ìˆëŠ” ëª¨ë“  MovingObject ë¶ˆëŸ¬ì™€ì„œ ì˜¤ë¸Œì íŠ¸ í’€ ìƒì„±
         MovingObject[] objArr = Resources.LoadAll<MovingObject>("MovingObjects");
         foreach (MovingObject obj in objArr) {
             objs[(int)obj.type].Add(obj);
@@ -43,7 +43,7 @@ public class MovingObjectPool : MonoBehaviour {
     }
 
     void CreateNewObj(MovingObject obj, Queue<MovingObject> queue, bool isAdditional) {
-        // »õ ¿ÀºêÁ§Æ®¸¦ ÁöÁ¤µÈ ¼ö ¸¸Å­ »ı¼ºÇÏ¿© Pool¿¡ ³Ö±â
+        // ìƒˆ ì˜¤ë¸Œì íŠ¸ë¥¼ ì§€ì •ëœ ìˆ˜ ë§Œí¼ ìƒì„±í•˜ì—¬ Poolì— ë„£ê¸°
         for (int i = 0; i < (isAdditional ? obj.additionalCount : obj.count); i++) {
             GameObject newObj = Instantiate(obj.gameObject);
             newObj.SetActive(false);
@@ -54,24 +54,24 @@ public class MovingObjectPool : MonoBehaviour {
     }
 
     public MovingObject GetObj(MovingObject.ObjType type) {
-        // ÇØ´ç Å¸ÀÔ¿¡ ¸Â´Â ÇÁ¸®ÆÕ ·£´ı ¼±ÅÃ
+        // í•´ë‹¹ íƒ€ì…ì— ë§ëŠ” í”„ë¦¬íŒ¹ ëœë¤ ì„ íƒ
         int prefabCount = objs[(int)type].Count;
         int prefabIdx = UnityEngine.Random.Range(0, prefabCount);
         Queue<MovingObject> queue = objQueues[(int)type][prefabIdx];
 
-        // ÇØ´ç ÇÁ¸®ÆÕÀÌ Pool¿¡ ³²¾ÆÀÖÁö ¾Ê´Ù¸é Ãß°¡ÀûÀ¸·Î ¿ÀºêÁ§Æ® »ı¼ºÇÏ¿© Pool¿¡ ³Ö±â
+        // í•´ë‹¹ í”„ë¦¬íŒ¹ì´ Poolì— ë‚¨ì•„ìˆì§€ ì•Šë‹¤ë©´ ì¶”ê°€ì ìœ¼ë¡œ ì˜¤ë¸Œì íŠ¸ ìƒì„±í•˜ì—¬ Poolì— ë„£ê¸°
         if (queue.Count == 0) {
             CreateNewObj(objs[(int)type][prefabIdx], queue, true);
         }
 
-        // Pool¿¡¼­ ¿ÀºêÁ§Æ® ²¨³»±â
+        // Poolì—ì„œ ì˜¤ë¸Œì íŠ¸ êº¼ë‚´ê¸°
         MovingObject obj = queue.Dequeue();
         obj.gameObject.SetActive(true);
         return obj;
     }
 
     public void ReturnObj(MovingObject obj) {
-        // ¿ÀºêÁ§Æ®¸¦ ÀÚ½ÅÀÌ ¼ÓÇÑ Pool¿¡ ³Ö±â
+        // ì˜¤ë¸Œì íŠ¸ë¥¼ ìì‹ ì´ ì†í•œ Poolì— ë„£ê¸°
         obj.gameObject.SetActive(false);
         Queue<MovingObject> queue = getQueueByObj[obj];
         queue.Enqueue(obj);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Àå¾Ö¹° ¹× ÄÚÀÎ°úÀÇ Ãæµ¹À» °¨ÁöÇÏ°í ÇØ´ç ·ÎÁ÷À» Ã³¸®ÇÏ´Â ÄÄÆ÷³ÍÆ®
+/// ì¥ì• ë¬¼ ë° ì½”ì¸ê³¼ì˜ ì¶©ëŒì„ ê°ì§€í•˜ê³  í•´ë‹¹ ë¡œì§ì„ ì²˜ë¦¬í•˜ëŠ” ì»´í¬ë„ŒíŠ¸
 /// </summary>
 public class PlayerCollision : MonoBehaviour
 {
@@ -20,17 +20,17 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         //player die function
         if(other.tag == "Obstacle"){
-            // °ÔÀÓ¿À¹ö Ã³¸®
+            // ê²Œì„ì˜¤ë²„ ì²˜ë¦¬
             GameManager.Instance.SetState(GameState.gameover);
             StartCoroutine(PlayerDieMovement());
 
-            // ÇöÀç Á¡¼ö, È¹µæ ÄÚÀÎ °á°ú ¼³Á¤ ¹× UI È°¼ºÈ­
+            // í˜„ì¬ ì ìˆ˜, íšë“ ì½”ì¸ ê²°ê³¼ ì„¤ì • ë° UI í™œì„±í™”
             gameoverScreen.GetComponent<GameoverScreen>().SetResult(scoreManager.GetScore, scoreManager.GetEarnedCoin);
             GameManager.Instance.GameoverAndSave(scoreManager.GetScore, scoreManager.GetEarnedCoin);
             gameoverScreen.SetActive(true);
 
             Time.timeScale = 0f; // DEBUGGING CODE
-            // FADE IN Ã³¸®·Î °ÔÀÓ¿À¹ö UI°¡ ³ª¿Í¾ß ÇÔ
+            // FADE IN ì²˜ë¦¬ë¡œ ê²Œì„ì˜¤ë²„ UIê°€ ë‚˜ì™€ì•¼ í•¨
         }
         else if (other.tag == "Coin") {
             MovingObjectPool.instance.ReturnObj(other.GetComponent<Coin>());
@@ -38,12 +38,12 @@ public class PlayerCollision : MonoBehaviour
         }
     }
     
-    // ÇÃ·¹ÀÌ¾î Ãæµ¹ ÈÄ ragdoll È¿°ú
+    // í”Œë ˆì´ì–´ ì¶©ëŒ í›„ ragdoll íš¨ê³¼
     IEnumerator PlayerDieMovement()
     {
         moveScript.enabled = false;
 
-        // ÇÃ·¹ÀÌ¾î°¡ ¾ÕÂÊÀ¸·Î 90µµ ¾ş¾îÁü 
+        // í”Œë ˆì´ì–´ê°€ ì•ìª½ìœ¼ë¡œ 90ë„ ì—ì–´ì§ 
         var startAngle = transform.rotation;
         var destAngle = Quaternion.Euler(transform.eulerAngles + Vector3.right * 90f);
         for (float t = 0f; t < 1f; t += Time.deltaTime / 0.1f)
@@ -52,7 +52,7 @@ public class PlayerCollision : MonoBehaviour
             yield return null;
         }
 
-        // µÚ·Î 10¸¸Å­ ÀÌµ¿
+        // ë’¤ë¡œ 10ë§Œí¼ ì´ë™
         var startPos = transform.position;
         while (Vector3.Distance(startPos, transform.position) < 10f)
         {

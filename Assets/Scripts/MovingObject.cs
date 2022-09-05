@@ -7,15 +7,15 @@ public class MovingObject : MonoBehaviour
     public enum ObjType {box, can, reef, seagull, coin};
     public ObjType type;
     public float speed;
-    public int count; // ÃÊ±â »ı¼º °³¼ö
-    public int additionalCount; // ºÎÁ·ÇÒ ½Ã Ãß°¡·Î »ı¼ºÇÒ °³¼ö
-    public float endZPos; // ¼Ò¸êµÉ ¶§ÀÇ zÁÂÇ¥
+    public int count; // ì´ˆê¸° ìƒì„± ê°œìˆ˜
+    public int additionalCount; // ë¶€ì¡±í•  ì‹œ ì¶”ê°€ë¡œ ìƒì„±í•  ê°œìˆ˜
+    public float endZPos; // ì†Œë©¸ë  ë•Œì˜ zì¢Œí‘œ
 
     protected virtual void FixedUpdate() {
-        // ÀÌµ¿
+        // ì´ë™
         transform.Translate(Vector3.back * speed, Space.World);
         
-        // ¼Ò¸ê
+        // ì†Œë©¸
         if (transform.position.z <= endZPos) {
             MovingObjectPool.instance.ReturnObj(this);
         }

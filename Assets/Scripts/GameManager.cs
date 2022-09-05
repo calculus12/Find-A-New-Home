@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public string characterName { get; set; } = "Penguin";
 
     /// <summary>
-    /// ÇöÀç »óÅÂ
+    /// í˜„ì¬ ìƒíƒœ
     /// </summary>
     private GameState state = GameState.start;
 
@@ -35,14 +35,14 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// SetState°¡ ½ÇÇàµÉ¶§ ½ÇÇàµÉ event
+    /// SetStateê°€ ì‹¤í–‰ë ë•Œ ì‹¤í–‰ë  event
     /// </summary>
     public static event Action<GameState> OnGameStateChanged;
 
     /// <summary>
-    /// °ÔÀÓ ¸Å´ÏÀúÀÇ »óÅÂ¸¦ ¼³Á¤ÇÑ´Ù.
+    /// ê²Œì„ ë§¤ë‹ˆì €ì˜ ìƒíƒœë¥¼ ì„¤ì •í•œë‹¤.
     /// </summary>
-    /// <param name="newState">¹Ù²Ü »óÅÂ<param>
+    /// <param name="newState">ë°”ê¿€ ìƒíƒœ<param>
     public void SetState(GameState newState)
     {
         state = newState;
@@ -100,11 +100,11 @@ public class GameManager : MonoBehaviour
     {
         SetState(GameState.gameover);
 
-        // ÄÚÀÎ ¼³Á¤
+        // ì½”ì¸ ì„¤ì •
         int curCoin = PrefsManager.Instance.GetCoin();
         PrefsManager.Instance.SetCoin(curCoin + earnedCoin);
 
-        // ÃÖ°í±â·Ï ¼³Á¤
+        // ìµœê³ ê¸°ë¡ ì„¤ì •
         if (curScore > PrefsManager.Instance.GetBestScore())
         {
             PrefsManager.Instance.SetBestScore(curScore);

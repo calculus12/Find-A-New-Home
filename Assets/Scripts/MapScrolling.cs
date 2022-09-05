@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// µÚ·Î ÀÌµ¿ÇÑ ¹è°æÀ» ¾ÕÀ¸·Î Àç¹èÄ¡ÇÏ´Â ½ºÅ©¸³Æ® (About z)
+// ë’¤ë¡œ ì´ë™í•œ ë°°ê²½ì„ ì•ìœ¼ë¡œ ì¬ë°°ì¹˜í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸ (About z)
 public class MapScrolling : MonoBehaviour
 {
     [SerializeField] float endPosition;
@@ -14,7 +14,7 @@ public class MapScrolling : MonoBehaviour
 
     private void Awake()
     {
-        // ÀÚ½Ä Æ®·£½ºÆû °¡Á®¿À±â
+        // ìì‹ íŠ¸ëœìŠ¤í¼ ê°€ì ¸ì˜¤ê¸°
         foreach (Transform child in transform)
         {
             //Debug.Log(child.name);
@@ -24,7 +24,7 @@ public class MapScrolling : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // ÇöÀç zÀ§Ä¡°¡ endPosition ÀÌÇÏ·Î ÀÌµ¿ÇßÀ»¶§ À§Ä¡¸¦ ¸®¼Â
+        // í˜„ì¬ zìœ„ì¹˜ê°€ endPosition ì´í•˜ë¡œ ì´ë™í–ˆì„ë•Œ ìœ„ì¹˜ë¥¼ ë¦¬ì…‹
         foreach (Transform transform in children)
         {
             transform.Translate(Vector3.back * speed);
@@ -35,10 +35,10 @@ public class MapScrolling : MonoBehaviour
         }
     }
 
-    // À§Ä¡¸¦ ¸®¼ÂÇÏ´Â ¸Ş¼­µå
+    // ìœ„ì¹˜ë¥¼ ë¦¬ì…‹í•˜ëŠ” ë©”ì„œë“œ
     private void Reposition(Transform transform)
     {
-        // ÇöÀç zÀ§Ä¡¸¦ startPositionÀ¸·Î ¸®¼Â
+        // í˜„ì¬ zìœ„ì¹˜ë¥¼ startPositionìœ¼ë¡œ ë¦¬ì…‹
         transform.position = new Vector3(transform.position.x, transform.position.y, startPosition);
     }
 }

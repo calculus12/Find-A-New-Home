@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -9,8 +9,8 @@ public class CharacterChangeButton : MonoBehaviour, ButtonBase
     [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] CharacterSelectController characterSelectController;
 
-    private string textWhenSelectionInactive = "ƒ≥∏Ø≈Õ ∫Ø∞Ê«œ±‚!";
-    private string textWhenSelectionActive = "√Îº“";
+    private string textWhenSelectionInactive = "Ï∫êÎ¶≠ÌÑ∞ Î≥ÄÍ≤ΩÌïòÍ∏∞!";
+    private string textWhenSelectionActive = "Ï∑®ÏÜå";
     public void OnClicked()
     {
         // button 

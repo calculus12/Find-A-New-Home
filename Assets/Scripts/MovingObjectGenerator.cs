@@ -8,36 +8,36 @@ public class MovingObjectGenerator : MonoBehaviour
 {
     public static MovingObjectGenerator instance {get; private set;}
 
-    // »ı¼º À§Ä¡
+    // ìƒì„± ìœ„ì¹˜
     [SerializeField] float[] XPoses;
     [SerializeField] float ZPos;
 
-    // ¿¬¼ÓÀ¸·Î »ı¼ºµÇ´Â ÄÚÀÎ °³¼ö
+    // ì—°ì†ìœ¼ë¡œ ìƒì„±ë˜ëŠ” ì½”ì¸ ê°œìˆ˜
     [SerializeField] int coinMinCount;
     [SerializeField] int coinMaxCount;
 
-    // »ı¼º °£°İ
+    // ìƒì„± ê°„ê²©
     [SerializeField] float obsMinInterval;
     [SerializeField] float obsMaxInterval;
     [SerializeField] float coinInterval;
 
-    // »ı¼º È®·ü
+    // ìƒì„± í™•ë¥ 
     [SerializeField] float obsSpawnProbability;
     [SerializeField] float coinSpawnProbability;
-    [SerializeField] float coinLowHeightProbability; // ÄÚÀÎÀÌ ÇÏ´Ü¿¡ »ı¼ºµÉ È®·ü
-    [SerializeField] float coinHighHeightProbability; // ÄÚÀÎÀÌ »ó´Ü¿¡ »ı¼ºµÉ È®·ü
+    [SerializeField] float coinLowHeightProbability; // ì½”ì¸ì´ í•˜ë‹¨ì— ìƒì„±ë  í™•ë¥ 
+    [SerializeField] float coinHighHeightProbability; // ì½”ì¸ì´ ìƒë‹¨ì— ìƒì„±ë  í™•ë¥ 
 
-    [SerializeField] int coinZeroHeightIdx; // Coin.yPoses¿¡¼­ °ªÀÌ 0ÀÏ ¶§ÀÇ index
+    [SerializeField] int coinZeroHeightIdx; // Coin.yPosesì—ì„œ ê°’ì´ 0ì¼ ë•Œì˜ index
 
     int obsTypeCount;
     int lineCount;
-    int[] coinHeightIdx; // °¢ ¶óÀÎ º° ÄÚÀÎ À§Ä¡
-    bool[,] isOccupied; // °¢ ¶óÀÎ º° ÀÚ¸® Â÷Áö ¿©ºÎ
+    int[] coinHeightIdx; // ê° ë¼ì¸ ë³„ ì½”ì¸ ìœ„ì¹˜
+    bool[,] isOccupied; // ê° ë¼ì¸ ë³„ ìë¦¬ ì°¨ì§€ ì—¬ë¶€
 
-    const int SPACE_CNT = 3; // »ó´Ü, Áß´Ü, ÇÏ´Ü
+    const int SPACE_CNT = 3; // ìƒë‹¨, ì¤‘ë‹¨, í•˜ë‹¨
 
     void Awake() {
-        // ½Ì±ÛÅæ
+        // ì‹±ê¸€í†¤
         if (instance == null) {
             instance = this;
         }
@@ -60,9 +60,9 @@ public class MovingObjectGenerator : MonoBehaviour
 
         float curInterval = 0f;
         float obsInterval = UnityEngine.Random.Range(obsMinInterval, obsMaxInterval);
-        int[] coinCount = new int[lineCount]; // °¢ ¶óÀÎº° ´õ »ı¼ºÇØ¾ß ÇÒ ÄÚÀÎ °³¼ö
+        int[] coinCount = new int[lineCount]; // ê° ë¼ì¸ë³„ ë” ìƒì„±í•´ì•¼ í•  ì½”ì¸ ê°œìˆ˜
 
-        // coinInterval¸¶´Ù ÄÚÀÎ »ı¼º ·ÎÁ÷ ½ÇÇà, obsInterval¸¶´Ù Àå¾Ö¹° »ı¼º ·ÎÁ÷ ½ÇÇà
+        // coinIntervalë§ˆë‹¤ ì½”ì¸ ìƒì„± ë¡œì§ ì‹¤í–‰, obsIntervalë§ˆë‹¤ ì¥ì• ë¬¼ ìƒì„± ë¡œì§ ì‹¤í–‰
         while (true) {
             if (curInterval > obsInterval) {
                 GeneratedObses();
@@ -77,7 +77,7 @@ public class MovingObjectGenerator : MonoBehaviour
         }
     }
 
-    // Àå¾Ö¹° »ı¼º
+    // ì¥ì• ë¬¼ ìƒì„±
     void GeneratedObses() {
         for (int i = 0; i < lineCount; i++) {
             for (int j = 0; j < SPACE_CNT; j++) {
@@ -87,24 +87,24 @@ public class MovingObjectGenerator : MonoBehaviour
 
         MovingObject obj = null;
         for (int i = 0; i < lineCount; i++) {
-            // ÀÏÁ¤ È®·ü·Î Àå¾Ö¹° »ı¼º ¾ÈµÊ
+            // ì¼ì • í™•ë¥ ë¡œ ì¥ì• ë¬¼ ìƒì„± ì•ˆë¨
             float randomNum = UnityEngine.Random.Range(0f, 1f);
             if (randomNum > obsSpawnProbability) continue;
                 
-            // Àå¾Ö¹° »ı¼º
+            // ì¥ì• ë¬¼ ìƒì„±
             MovingObject.ObjType type = (MovingObject.ObjType)UnityEngine.Random.Range(0, obsTypeCount);
             obj = MovingObjectPool.instance.GetObj(type);
             Obstacle obs = obj as Obstacle;
-            Debug.Assert(obs != null, "SpawningMovingObjectPool¿¡¼­ °¡Á®¿Â ¿ÀºêÁ§Æ®°¡ Àå¾Ö¹°ÀÌ ¾Æ´Õ´Ï´Ù");
+            Debug.Assert(obs != null, "SpawningMovingObjectPoolì—ì„œ ê°€ì ¸ì˜¨ ì˜¤ë¸Œì íŠ¸ê°€ ì¥ì• ë¬¼ì´ ì•„ë‹™ë‹ˆë‹¤");
 
-            // Àå¾Ö¹° À§Ä¡ ¼³Á¤
+            // ì¥ì• ë¬¼ ìœ„ì¹˜ ì„¤ì •
             obs.transform.position = new Vector3(XPoses[i], obs.yPos, ZPos);
             if (obs.occupyLow) isOccupied[i, 0] = true;
             if (obs.occupyMid) isOccupied[i, 1] = true;
             if (obs.occupyHigh) isOccupied[i, 2] = true;
         }
 
-        // ¸ğµç °ø°£ÀÌ Àå¾Ö¹°·Î ¸·ÇôÀÖ´Ù¸é ¸¶Áö¸· ¶óÀÎÀÇ Àå¾Ö¹°À» ¾ø¾Ú
+        // ëª¨ë“  ê³µê°„ì´ ì¥ì• ë¬¼ë¡œ ë§‰í˜€ìˆë‹¤ë©´ ë§ˆì§€ë§‰ ë¼ì¸ì˜ ì¥ì• ë¬¼ì„ ì—†ì•°
         if (!IsValid()) {
             MovingObjectPool.instance.ReturnObj(obj);
             for (int i = 0; i < SPACE_CNT; i++) {
@@ -113,7 +113,7 @@ public class MovingObjectGenerator : MonoBehaviour
         }
     }
 
-    // ¸ğµç °ø°£ÀÌ Àå¾Ö¹°·Î ¸·ÇôÀÖ´Ù¸é return false
+    // ëª¨ë“  ê³µê°„ì´ ì¥ì• ë¬¼ë¡œ ë§‰í˜€ìˆë‹¤ë©´ return false
     bool IsValid() {
         for (int i = 0; i < lineCount; i++) {
             for (int j = 0; j < SPACE_CNT; j++) {
@@ -127,55 +127,55 @@ public class MovingObjectGenerator : MonoBehaviour
 
     void GenerateCoins(int[] coinCount) {
         for (int i = 0; i < lineCount; i++) {
-            // ÀÌ¹ø ÅÏ¿¡ ÄÚÀÎÀ» »ı¼ºÇÏÁö ¾Ê´Â´Ù¸é
+            // ì´ë²ˆ í„´ì— ì½”ì¸ì„ ìƒì„±í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´
             if (coinCount[i] <= 0) {
-                // ÀÏÁ¤ È®·ü·Î ´ÙÀ½ ÅÏ¿¡ ÄÚÀÎ »ı¼º
+                // ì¼ì • í™•ë¥ ë¡œ ë‹¤ìŒ í„´ì— ì½”ì¸ ìƒì„±
                 float randomNum = UnityEngine.Random.Range(0f, 1f);
                 if (randomNum < coinSpawnProbability) {
                     coinCount[i] = UnityEngine.Random.Range(coinMinCount, coinMaxCount);
                 }
             }
 
-            // ÀÌ¹ø ÅÏ¿¡ ÄÚÀÎÀ» »ó´Ü¿¡ »ı¼ºÇØ¾ß ÇÑ´Ù¸é
+            // ì´ë²ˆ í„´ì— ì½”ì¸ì„ ìƒë‹¨ì— ìƒì„±í•´ì•¼ í•œë‹¤ë©´
             else if (coinHeightIdx[i] > coinZeroHeightIdx) {
-                // »ó´ÜÀ» Àå¾Ö¹°ÀÌ °¡·Î¸·°í ÀÖ´Ù¸é ÄÚÀÎ »ı¼º Áß´Ü
+                // ìƒë‹¨ì„ ì¥ì• ë¬¼ì´ ê°€ë¡œë§‰ê³  ìˆë‹¤ë©´ ì½”ì¸ ìƒì„± ì¤‘ë‹¨
                 if (isOccupied[i, 2]) {
                     StopCoin(i, coinCount);
                     continue;
                 }
-                // ±×·¸Áö ¾ÊÀ¸¸é »ó´Ü¿¡ ÄÚÀÎ »ı¼º
+                // ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ ìƒë‹¨ì— ì½”ì¸ ìƒì„±
                 GenerateCoin(i, coinHeightIdx[i]++);
             }
 
-            // ÀÌ¹ø ÅÏ¿¡ ÄÚÀÎÀ» ÇÏ´Ü¿¡ »ı¼ºÇØ¾ß ÇÑ´Ù¸é
+            // ì´ë²ˆ í„´ì— ì½”ì¸ì„ í•˜ë‹¨ì— ìƒì„±í•´ì•¼ í•œë‹¤ë©´
             else if (coinHeightIdx[i] < coinZeroHeightIdx) {
-                // ÇÏ´ÜÀ» Àå¾Ö¹°ÀÌ °¡·Î¸·°í ÀÖ´Ù¸é ÄÚÀÎ »ı¼º Áß´Ü
+                // í•˜ë‹¨ì„ ì¥ì• ë¬¼ì´ ê°€ë¡œë§‰ê³  ìˆë‹¤ë©´ ì½”ì¸ ìƒì„± ì¤‘ë‹¨
                 if (isOccupied[i, 0]) {
                     StopCoin(i, coinCount);
                     continue;
                 }
 
-                // ±×·¸Áö ¾ÊÀ¸¸é ÇÏ´Ü¿¡ ÄÚÀÎ »ı¼º
+                // ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ í•˜ë‹¨ì— ì½”ì¸ ìƒì„±
                 GenerateCoin(i, coinHeightIdx[i]--);
             }
 
-            // ÀÌ¹ø ÅÏ¿¡ ÄÚÀÎÀ» Áß´Ü¿¡ »ı¼ºÇØ¾ß ÇÑ´Ù¸é
+            // ì´ë²ˆ í„´ì— ì½”ì¸ì„ ì¤‘ë‹¨ì— ìƒì„±í•´ì•¼ í•œë‹¤ë©´
             else {
-                // Áß´ÜÀ» Àå¾Ö¹°ÀÌ °¡·Î¸·°í ÀÖ´Ù¸é ÄÚÀÎ »ı¼º Áß´Ü
+                // ì¤‘ë‹¨ì„ ì¥ì• ë¬¼ì´ ê°€ë¡œë§‰ê³  ìˆë‹¤ë©´ ì½”ì¸ ìƒì„± ì¤‘ë‹¨
                 if (isOccupied[i, 1]) {
                     StopCoin(i, coinCount);
                     continue;
                 }
 
-                // ±×·¸Áö ¾ÊÀ¸¸é Áß´Ü¿¡ ÄÚÀÎ »ı¼º
+                // ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ ì¤‘ë‹¨ì— ì½”ì¸ ìƒì„±
                 GenerateCoin(i, coinHeightIdx[i]);
 
                 float randomNum = UnityEngine.Random.Range(0f, 1f);
-                // ÀÏÁ¤ È®·ü·Î ´ÙÀ½ ÅÏ¿¡ ÄÚÀÎÀ» »ó´Ü¿¡ »ı¼º
+                // ì¼ì • í™•ë¥ ë¡œ ë‹¤ìŒ í„´ì— ì½”ì¸ì„ ìƒë‹¨ì— ìƒì„±
                 if (randomNum < coinHighHeightProbability) {
                     coinHeightIdx[i]++;
                 }
-                // ÀÏÁ¤ È®·ü·Î ´ÙÀ½ ÅÏ¿¡ ÄÚÀÎÀ» ÇÏ´Ü¿¡ »ı¼º
+                // ì¼ì • í™•ë¥ ë¡œ ë‹¤ìŒ í„´ì— ì½”ì¸ì„ í•˜ë‹¨ì— ìƒì„±
                 else if (randomNum > 1 - coinLowHeightProbability) {
                     coinHeightIdx[i]--;
                 }
@@ -185,12 +185,12 @@ public class MovingObjectGenerator : MonoBehaviour
     }
 
     void GenerateCoin(int lineNum, int yPosIdx) {
-        // ÄÚÀÎ »ı¼º
+        // ì½”ì¸ ìƒì„±
         MovingObject obj = MovingObjectPool.instance.GetObj(Obstacle.ObjType.coin);
         Coin coin = obj as Coin;
-        Debug.Assert(coin != null, "SpawningMovingObjectPool¿¡¼­ °¡Á®¿Â ¿ÀºêÁ§Æ®°¡ ÄÚÀÎÀÌ ¾Æ´Õ´Ï´Ù");
+        Debug.Assert(coin != null, "SpawningMovingObjectPoolì—ì„œ ê°€ì ¸ì˜¨ ì˜¤ë¸Œì íŠ¸ê°€ ì½”ì¸ì´ ì•„ë‹™ë‹ˆë‹¤");
         
-        // À§Ä¡ ¼³Á¤
+        // ìœ„ì¹˜ ì„¤ì •
         coin.transform.position = new Vector3(XPoses[lineNum], coin.yPoses[yPosIdx], ZPos);
         if (coinHeightIdx[lineNum] >= coin.yPoses.Length || coinHeightIdx[lineNum] < 0) {
             coinHeightIdx[lineNum] = coinZeroHeightIdx;

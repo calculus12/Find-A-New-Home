@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ╥ндц ╣╔юлем╣Ию╩ ╨р╥╞©ю╟М юЗюЕгр ╪Ж юж╢б ддфВЁмф╝, Singletonю╦╥н ╠╦гЖ╣г╬Н instance╥н а╒╠ы ╟║╢и
+/// К║°Л╩╛ К█╟Л²╢М└╟К⌠╓Л²└ К╤┬К÷╛Л≤╓ЙЁ═ Л═─Л·╔М∙═ Л┬≤ Л·┬К┼■ Л╩╢М▐╛К└▄М┼╦, SingletonЛ°╪К║° Й╣╛М≤└К░≤Л√╢ instanceК║° Л═▒Й╥╪ Й╟─К┼╔
 /// </summary>
 public class PrefsManager : MonoBehaviour
 {
@@ -36,18 +36,18 @@ public class PrefsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ╥ндц ╣╔юлем©║ юЗюЕ╣х ╨╦ю╞дзюню╩ ╨р╥╞©ю╢б гт╪Ж
+    /// К║°Л╩╛ К█╟Л²╢М└╟Л≈░ Л═─Л·╔К░° КЁ╢Л°═Л╫■Л²╦Л²└ К╤┬К÷╛Л≤╓К┼■ М∙╗Л┬≤
     /// </summary>
-    /// <returns>╨╦ю╞дзюню╩ ╧щх╞, ╦╦╬Ю ╣╔юлем╟║ ╬Ью╦╦И 0ю╩ ╧щх╞</returns>
+    /// <returns>КЁ╢Л°═Л╫■Л²╦Л²└ К╟≤М≥≤, К╖▄Л∙╫ К█╟Л²╢М└╟Й╟─ Л≈├Л°╪К╘╢ 0Л²└ К╟≤М≥≤</returns>
     public int GetCoin()
     {
         return PlayerPrefs.GetInt("coin", 0);
     }
 
     /// <summary>
-    /// гЖюГ дзюню╩ ╥ндц ╣╔юлем©║ ╪Ёа╓го╢б гт╪Ж
+    /// М≤└Л·╛ Л╫■Л²╦Л²└ К║°Л╩╛ К█╟Л²╢М└╟Л≈░ Л└╓Л═∙М∙≤К┼■ М∙╗Л┬≤
     /// </summary>
-    /// <param name="coin">╪Ёа╓гр ╣╔юлем дзюн, 0 ╧л╦╦юл╦И ╪Ёа╓гоаЖ ╬йю╫</param>
+    /// <param name="coin">Л└╓Л═∙М∙═ К█╟Л²╢М└╟ Л╫■Л²╦, 0 К╞╦К╖▄Л²╢К╘╢ Л└╓Л═∙М∙≤Л╖─ Л∙┼Л²▄</param>
     public void SetCoin(int coin)
     {
         if (coin < 0) return;
@@ -55,18 +55,18 @@ public class PrefsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ╥ндц ╣╔юлем©║╪╜ цж╟М╠Б╥ою╩ ╨р╥╞©ю╢б гт╪Ж
+    /// К║°Л╩╛ К█╟Л²╢М└╟Л≈░Л└° Л╣°ЙЁ═Й╦╟К║²Л²└ К╤┬К÷╛Л≤╓К┼■ М∙╗Л┬≤
     /// </summary>
-    /// <returns>цж╟М╠Б╥ою╩ ╧щх╞, ╦╦╬Ю ╣╔юлем╟║ ╬Ью╦╦И 0ю╩ ╧щх╞</returns>
+    /// <returns>Л╣°ЙЁ═Й╦╟К║²Л²└ К╟≤М≥≤, К╖▄Л∙╫ К█╟Л²╢М└╟Й╟─ Л≈├Л°╪К╘╢ 0Л²└ К╟≤М≥≤</returns>
     public int GetBestScore()
     {
         return PlayerPrefs.GetInt("best_score", 0);
     }
 
     /// <summary>
-    /// цж╟М╠Б╥ою╩ ╥ндц ╣╔юлем©║ ╪Ёа╓го╢б гт╪Ж
+    /// Л╣°ЙЁ═Й╦╟К║²Л²└ К║°Л╩╛ К█╟Л²╢М└╟Л≈░ Л└╓Л═∙М∙≤К┼■ М∙╗Л┬≤
     /// </summary>
-    /// <param name="bestScore">╪Ёа╓гр цж╟М╠Б╥о, 0 ╧л╦╦юл╦И ╪Ёа╓гоаЖ ╬йю╫</param>
+    /// <param name="bestScore">Л└╓Л═∙М∙═ Л╣°ЙЁ═Й╦╟К║², 0 К╞╦К╖▄Л²╢К╘╢ Л└╓Л═∙М∙≤Л╖─ Л∙┼Л²▄</param>
     public void SetBestScore(int bestScore) 
     {
         if (bestScore < 0) return;

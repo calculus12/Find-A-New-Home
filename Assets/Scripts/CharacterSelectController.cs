@@ -16,7 +16,7 @@ public class CharacterSelectController : MonoBehaviour
         Transform[] allChildren = GetComponentsInChildren<Transform>(true);
 
         int i = 0;
-        while (i < transform.childCount) // Ã¹¹øÂ° depthÀÇ ÀÚ½Äµé(Ä³¸¯ÅÍµé)À» characters¿¡ ÃÊ±âÈ­
+        while (i < transform.childCount) // ì²«ë²ˆì§¸ depthì˜ ìì‹ë“¤(ìºë¦­í„°ë“¤)ì„ charactersì— ì´ˆê¸°í™”
         {
             characters.Add(transform.GetChild(i).gameObject);
             i++;
@@ -32,9 +32,9 @@ public class CharacterSelectController : MonoBehaviour
     }
 
     /// <summary>
-    /// Left Button°ú Right Button ´­·¶À» ¶§ Ä³¸¯ÅÍ ÀÓ½Ã º¯°æ
+    /// Left Buttonê³¼ Right Button ëˆŒë €ì„ ë•Œ ìºë¦­í„° ì„ì‹œ ë³€ê²½
     /// </summary>
-    /// <param name="isNext">Righut ButtonÀ» ´­·¶À» ¶§ true</param>
+    /// <param name="isNext">Righut Buttonì„ ëˆŒë €ì„ ë•Œ true</param>
     public void ChangeCharacter(bool isNext)
     {
         characters[tempCharacter].SetActive(false);
@@ -52,7 +52,7 @@ public class CharacterSelectController : MonoBehaviour
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍ ¼±ÅÃ ¹öÆ°À» ´©¸£°í Ä³¸¯ÅÍ º¯°æ
+    /// ìºë¦­í„° ì„ íƒ ë²„íŠ¼ì„ ëˆ„ë¥´ê³  ìºë¦­í„° ë³€ê²½
     /// </summary>
     public void SetCharacter()
     {
@@ -60,17 +60,17 @@ public class CharacterSelectController : MonoBehaviour
         currentCharacterIndex = tempCharacter;
         currentCharacterName = characters[currentCharacterIndex].name;
 
-        // °ÔÀÓ ¸Å´ÏÀú¿¡ Ä³¸¯ÅÍ ÀÌ¸§À» ÀúÀåÇØ¼­ °ÔÀÓ ÇÃ·¹ÀÌ ¾ÀÀ¸·Î ³Ñ¾î°¬À» ¶§
-        // ¼±ÅÃÇÑ Ä³¸¯ÅÍ¸¦ È°¼ºÈ­ÇÏ°Ô²û ÇÔ
+        // ê²Œì„ ë§¤ë‹ˆì €ì— ìºë¦­í„° ì´ë¦„ì„ ì €ì¥í•´ì„œ ê²Œì„ í”Œë ˆì´ ì”¬ìœ¼ë¡œ ë„˜ì–´ê°”ì„ ë•Œ
+        // ì„ íƒí•œ ìºë¦­í„°ë¥¼ í™œì„±í™”í•˜ê²Œë” í•¨
         GameManager.Instance.characterIndex = currentCharacterIndex;
         GameManager.Instance.characterName = currentCharacterName;
 
-        // ÇöÀç ¼³Á¤ÇÑ Ä³¸¯ÅÍ È°¼ºÈ­
+        // í˜„ì¬ ì„¤ì •í•œ ìºë¦­í„° í™œì„±í™”
         characters[currentCharacterIndex].SetActive(true);
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍ ¼±ÅÃÇÏ´Ù Ãë¼Ò ¹öÆ° ´­·¶À» ¶§ ¿ø·¡ Ä³¸¯ÅÍ·Î µÇµ¹¸®±â
+    /// ìºë¦­í„° ì„ íƒí•˜ë‹¤ ì·¨ì†Œ ë²„íŠ¼ ëˆŒë €ì„ ë•Œ ì›ë˜ ìºë¦­í„°ë¡œ ë˜ëŒë¦¬ê¸°
     /// </summary>
     public void CancelChange()
     {
