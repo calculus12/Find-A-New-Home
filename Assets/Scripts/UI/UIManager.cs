@@ -33,10 +33,10 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// UI Canvas È°¼ºÈ­(ºñÈ°¼ºÈ­)
+    /// UI Canvas í™œì„±í™”(ë¹„í™œì„±í™”)
     /// </summary>
-    /// <param name="go">È°¼ºÈ­(ºñÈ°¼ºÈ­)ÇÒ Äµ¹ö½º</param>
-    /// <param name="active">trueÀÌ¸é È°¼ºÈ­ falseÀÌ¸é ºñÈ°¼ºÈ­</param>
+    /// <param name="go">í™œì„±í™”(ë¹„í™œì„±í™”)í•  ìº”ë²„ìŠ¤</param>
+    /// <param name="active">trueì´ë©´ í™œì„±í™” falseì´ë©´ ë¹„í™œì„±í™”</param>
     public void SetCanvas(GameObject go, bool active)
     {
         go.SetActive(active);

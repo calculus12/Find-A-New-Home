@@ -5,14 +5,18 @@ using UnityEngine;
 public class CharacterSetting : MonoBehaviour
 {
     string characterName = "Penguin";
+    [SerializeField] GameObject gameoverCharacters;
     void Start()
     {
-        // Ä³¸¯ÅÍ ÀÌ¸§À» Àü´Ş¹Ş°í ÆÄ±«½ÃÅ²´Ù
+        // ìºë¦­í„° ì´ë¦„ì„ ì „ë‹¬ë°›ê³  íŒŒê´´ì‹œí‚¨ë‹¤
         characterName = GameManager.Instance.characterName;
 
-        // ¼±ÅÃµÈ Ä³¸¯ÅÍ¸¦ È°¼ºÈ­
+        // ì„ íƒëœ ìºë¦­í„°ë¥¼ í™œì„±í™”
         var character = transform.Find(characterName).gameObject;
+        // ê²Œì„ì˜¤ë²„ ìºë¦­í„° í™œì„±í™”
+        var goCharacter = gameoverCharacters.transform.Find(characterName).gameObject;
         //Debug.Log(characterName);
         character.SetActive(true);
+        goCharacter.SetActive(true);
     }
 }

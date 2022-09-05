@@ -6,7 +6,7 @@ public class Obstacle : MovingObject
 {
     public float yPos;
 
-    // ÀÚ¸® Â÷Áö ¿©ºÎ
+    // ìë¦¬ ì°¨ì§€ ì—¬ë¶€
     public bool occupyLow;
     public bool occupyMid;
     public bool occupyHigh;

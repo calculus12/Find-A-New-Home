@@ -18,7 +18,7 @@ public class SoundButton : MonoBehaviour, ButtonBase
         if (isSoundOff)
         {
             image.sprite = soundOnImage;
-            // 家府 难扁
+            // 靻岆Μ 旒滉赴
 
             isSoundOff = false;
         }
@@ -26,7 +26,7 @@ public class SoundButton : MonoBehaviour, ButtonBase
         {
             image.sprite = soundOffImage;
 
-            // 家府 掺扁
+            // 靻岆Μ 雭勱赴
             isSoundOff = true;
         }
     }

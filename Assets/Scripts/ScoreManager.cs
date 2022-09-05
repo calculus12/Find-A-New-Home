@@ -8,6 +8,17 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
 
     int score = 0;
+    int earnedCoin = 0;
+
+    public int GetScore
+    {
+        get { return score; }
+    }
+
+    public int GetEarnedCoin
+    {
+        get { return earnedCoin; }
+    }
 
     [SerializeField] float scoreIncreaseInterval = 0.2f;
 
@@ -25,5 +36,10 @@ public class ScoreManager : MonoBehaviour
                 timePassed = 0f;
             }
         }
+    }
+
+    public void IncreaseCoin()
+    {
+        earnedCoin += 1;
     }
 }
