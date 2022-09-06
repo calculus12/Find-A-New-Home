@@ -107,7 +107,7 @@ public class Movement : MonoBehaviour
         // 점프 및 다이빙 로직
 
         // 바다에 가까우면 y=0 및 상태 초기화 
-        if (Mathf.Abs(transform.position.y) < 0.1f)
+        if (Mathf.Abs(transform.position.y) < 0.15f)
         {
             if (InFall || InRecovery)
             {
