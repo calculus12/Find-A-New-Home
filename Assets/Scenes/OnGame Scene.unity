@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2506,9 +2506,9 @@ MonoBehaviour:
   coinMinCount: 5
   coinMaxCount: 20
   obsMinInterval: 0.5
-  obsMaxInterval: 1.5
+  obsMaxInterval: 1
   coinInterval: 0.1
-  obsSpawnProbability: 0.6
+  obsSpawnProbability: 0.8
   coinSpawnProbability: 0.02
   coinLowHeightProbability: 0.05
   coinHighHeightProbability: 0.05
@@ -4571,6 +4571,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8347876400602919527, guid: be8aa1e1ea6369d4f957b06cd195e16b, type: 3}
+      propertyPath: JumpPower
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be8aa1e1ea6369d4f957b06cd195e16b, type: 3}
 --- !u!4 &1137173834776417109 stripped
@@ -4590,6 +4594,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1405005831}
     m_Modifications:
+    - target: {fileID: 58204271862978558, guid: 276808c90c1c18e40b30a8f30b42332e, type: 3}
+      propertyPath: JumpPower
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 973815245560363931, guid: 276808c90c1c18e40b30a8f30b42332e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5821,6 +5829,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1405005831}
     m_Modifications:
+    - target: {fileID: 1456708236413284675, guid: f34c6bf0528005a4893cb3fa0ae88866, type: 3}
+      propertyPath: JumpPower
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8946048651585397520, guid: f34c6bf0528005a4893cb3fa0ae88866, type: 3}
       propertyPath: m_Name
       value: Walrus
@@ -6362,6 +6374,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1405005831}
     m_Modifications:
+    - target: {fileID: 2256380412252684227, guid: eb7959ad3919f794081b8cb80c0d38db, type: 3}
+      propertyPath: JumpPower
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6171483092006619282, guid: eb7959ad3919f794081b8cb80c0d38db, type: 3}
       propertyPath: scoreManager
       value: 

@@ -25,7 +25,7 @@ public class SwipeManager : MonoBehaviour
     }
 
     // https://gamedev-resources.com/implementing-touch-with-input-systems-enhanced-touch-api/
-    void Update()
+    void FixedUpdate()
     {
         if (Touch.activeFingers.Count > 0)
         {

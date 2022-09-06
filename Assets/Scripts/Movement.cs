@@ -22,10 +22,11 @@ public class Movement : MonoBehaviour
     private Animator mAnimator;
     private float X, Y;
     private float DodgeSpeed = 10f;
-    [SerializeField] float JumpPower = 0.25f;
+    [SerializeField] float JumpPower;
     public bool InJump, InFall, InRoll, InRecovery;
     private float PauseDelay, DodgeDelay;
     public SwipeManager swipeManager;
+    [SerializeField] private float _delayConstant = 0f;
     private void Awake()
     {
         playerControls = new PlayerControls();
@@ -48,7 +49,7 @@ public class Movement : MonoBehaviour
         DodgeDelay = 0f;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // 일시정지 중이면 입력 무효화
         if (GameManager.Instance.GameState == GameState.pause)
@@ -58,14 +59,14 @@ public class Movement : MonoBehaviour
         }
         else if (PauseDelay > 0)
         {
-            PauseDelay -= Time.deltaTime;
+            PauseDelay -= Time.fixedDeltaTime;
             return;
         }
 
         // 캐릭터 레일 위치에 따른 컨트롤 및 X값 설정
         if (DodgeDelay > 0)
         {
-            DodgeDelay -= Time.deltaTime;
+            DodgeDelay -= Time.fixedDeltaTime;
         }
         else if (playerControls.Player.Left.triggered || swipeManager.swipeDirection == Swipe.Left)
         {
@@ -74,14 +75,14 @@ public class Movement : MonoBehaviour
                 mSide = SIDE.LEFT;
                 NewXPos = -XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
-                DodgeDelay = 0.1f;
+                DodgeDelay = _delayConstant;
             }
             else if (mSide == SIDE.RIGHT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
-                DodgeDelay = 0.1f;
+                DodgeDelay = _delayConstant;
             }
         }
         else if (playerControls.Player.Right.triggered || swipeManager.swipeDirection == Swipe.Right)
@@ -91,14 +92,14 @@ public class Movement : MonoBehaviour
                 mSide = SIDE.RIGHT;
                 NewXPos = XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
-                DodgeDelay = 0.1f;
+                DodgeDelay = _delayConstant;
             }
             else if (mSide == SIDE.LEFT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
-                DodgeDelay = 0.1f;
+                DodgeDelay = _delayConstant;
             }
         }
 
@@ -123,12 +124,12 @@ public class Movement : MonoBehaviour
                 // 만약 바다 위 (y>0)에 있으면 Y (y방향 속도) 감소
                 if (transform.position.y > 0.01f)
                 {
-                    Y -= JumpPower * 2.5f * Time.deltaTime;
+                    Y -= JumpPower * 2.5f * Time.fixedDeltaTime;
                 }
                 // 만약 바다 아래 (y<0)에 있으면 다이빙 중 점프이므로 Y 속도 증가
                 else
                 {
-                    Y += JumpPower * Time.deltaTime;
+                    Y += JumpPower * Time.fixedDeltaTime;
                 }
             }
             // 다이빙 상태에서 움직임 업데이트
@@ -136,11 +137,11 @@ public class Movement : MonoBehaviour
             {
                 if (transform.position.y < 0.01f)
                 {
-                    Y += JumpPower * 2.5f * Time.deltaTime;
+                    Y += JumpPower * 2.5f * Time.fixedDeltaTime;
                 }
                 else
                 {
-                    Y -= JumpPower * Time.deltaTime;
+                    Y -= JumpPower * Time.fixedDeltaTime;
                 }
             }
         }
@@ -177,7 +178,7 @@ public class Movement : MonoBehaviour
 
         // 캐릭터 NewXPos 및 Y에 따른 부드러운 이동
         Vector3 movement = new Vector3(X - transform.position.x, Y, 0f);
-        X = Mathf.Lerp(X, NewXPos, Time.deltaTime * DodgeSpeed);
+        X = Mathf.Lerp(X, NewXPos, Time.fixedDeltaTime * DodgeSpeed);
         mChar.Move(movement);
     }
 
@@ -198,7 +199,7 @@ public class Movement : MonoBehaviour
     //     }
     //     else
     //     {
-    //         Y -= JumpPower * 2 * Time.deltaTime;
+    //         Y -= JumpPower * 2 * Time.fixedDeltaTime;
     //         if (mChar.velocity.y < -0.1f)
     //         {
     //             InFall = true;
@@ -208,7 +209,7 @@ public class Movement : MonoBehaviour
 
     // private void Roll()
     // {
-    //     RollCounter -= Time.deltaTime;
+    //     RollCounter -= Time.fixedDeltaTime;
     //     if (RollCounter <= 0f)
     //     {
     //         RollCounter = 0f;
