@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -69,11 +70,13 @@ public class GameManager : MonoBehaviour
         {
             SetState(GameState.playing);
             Time.timeScale = 1f;
+            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
             return;
         }
 
         SetState(GameState.pause);
         Time.timeScale = 0f;
+        InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
     }
 
     public void StartGame()

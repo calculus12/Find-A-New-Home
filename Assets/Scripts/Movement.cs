@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 
@@ -26,7 +27,7 @@ public class Movement : MonoBehaviour
     public bool InJump, InFall, InRoll, InRecovery;
     private float PauseDelay, DodgeDelay;
     public SwipeManager swipeManager;
-    [SerializeField] private float _delayConstant = 0f;
+    [SerializeField] private float delayConstant = 0.1f;
     private void Awake()
     {
         playerControls = new PlayerControls();
@@ -75,14 +76,14 @@ public class Movement : MonoBehaviour
                 mSide = SIDE.LEFT;
                 NewXPos = -XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
-                DodgeDelay = _delayConstant;
+                DodgeDelay = delayConstant;
             }
             else if (mSide == SIDE.RIGHT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
-                DodgeDelay = _delayConstant;
+                DodgeDelay = delayConstant;
             }
         }
         else if (playerControls.Player.Right.triggered || swipeManager.swipeDirection == Swipe.Right)
@@ -92,14 +93,14 @@ public class Movement : MonoBehaviour
                 mSide = SIDE.RIGHT;
                 NewXPos = XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
-                DodgeDelay = _delayConstant;
+                DodgeDelay = delayConstant;
             }
             else if (mSide == SIDE.LEFT)
             {
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
-                DodgeDelay = _delayConstant;
+                DodgeDelay = delayConstant;
             }
         }
 
