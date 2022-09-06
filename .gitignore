@@ -22,6 +22,9 @@
 # Visual Studio cache directory
 .vs/
 
+# Rider
+.idea/
+
 # Gradle cache directory
 .gradle/
 
@@ -59,12 +62,16 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Downlaod Assets
-**/TextMesh Pro/
-**/Low Poly Ultimate Environment Packs/
-**/Quirky Series Vol.1 \[v1.3\]/
+**/Buttons/
+**/CokeCanModels/
 **/Cans opened pack/
 **/CrowArt \- PBR Cardboard Box/
+**/Game GUI Vol1/
+**/Gems and gold/
+**/Low Poly Ultimate Environment Packs/
 **/LiquidFire Package 4 \- BSH games/
 **/Low Poly Rock/
 **/PolyWorkshop/
-**/CokeCanModels/
+**/Quirky Series Vol.1 \[v1.3\]/
+**/StylizedWater2/
+**/TextMesh Pro/
