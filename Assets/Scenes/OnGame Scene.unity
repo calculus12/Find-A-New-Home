@@ -4515,6 +4515,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8085018697985179181, guid: be8aa1e1ea6369d4f957b06cd195e16b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 8347876400602919527, guid: be8aa1e1ea6369d4f957b06cd195e16b, type: 3}
       propertyPath: JumpPower
       value: 0.25
@@ -4585,6 +4589,10 @@ PrefabInstance:
     - target: {fileID: 973815245560363931, guid: 276808c90c1c18e40b30a8f30b42332e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961593992461358387, guid: 276808c90c1c18e40b30a8f30b42332e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 8115981411424548119, guid: 276808c90c1c18e40b30a8f30b42332e, type: 3}
       propertyPath: scoreManager
@@ -5777,6 +5785,10 @@ PrefabInstance:
       propertyPath: JumpPower
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 3843209619180297216, guid: f34c6bf0528005a4893cb3fa0ae88866, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 8946048651585397520, guid: f34c6bf0528005a4893cb3fa0ae88866, type: 3}
       propertyPath: m_Name
       value: Walrus
@@ -6321,6 +6333,14 @@ PrefabInstance:
     - target: {fileID: 2256380412252684227, guid: eb7959ad3919f794081b8cb80c0d38db, type: 3}
       propertyPath: JumpPower
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096888271835315111, guid: eb7959ad3919f794081b8cb80c0d38db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096888271835315111, guid: eb7959ad3919f794081b8cb80c0d38db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6171483092006619282, guid: eb7959ad3919f794081b8cb80c0d38db, type: 3}
       propertyPath: scoreManager
