@@ -13,7 +13,9 @@ public class SwipeManager : MonoBehaviour
     private Vector2 startPos, currentPos;
     private float swipeAngle;
     public Swipe swipeDirection;
-    private void Awake()
+
+    private List<int> boundaryAngles = new List<int> {60, 150, 210, 300};
+        private void Awake()
     {
         EnhancedTouchSupport.Enable();
     }
@@ -61,15 +63,15 @@ public class SwipeManager : MonoBehaviour
         {
             swipeAngle += 360;
         }
-        if (swipeAngle > 45 && swipeAngle <= 135)
+        if (swipeAngle > boundaryAngles[0] && swipeAngle <= boundaryAngles[1])
         {
             swipeDirection = Swipe.Up;
         }
-        else if (swipeAngle > 135 && swipeAngle <= 225)
+        else if (swipeAngle > boundaryAngles[1] && swipeAngle <= boundaryAngles[2])
         {
             swipeDirection = Swipe.Left;
         }
-        else if (swipeAngle > 225 && swipeAngle <= 315)
+        else if (swipeAngle > boundaryAngles[2] && swipeAngle <= boundaryAngles[3])
         {
             swipeDirection = Swipe.Down;
         }

@@ -21,6 +21,22 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+    
+    private void Awake()
+    {
+        // 프레임 설정
+        Application.targetFrameRate = 60;
+        
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public int characterIndex { get; set; } = 0;
     public string characterName { get; set; } = "Penguin";
@@ -128,19 +144,7 @@ public class GameManager : MonoBehaviour
             PrefsManager.Instance.SetBestScore(curScore);
         }
     }
-
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (_instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 
 }
 
