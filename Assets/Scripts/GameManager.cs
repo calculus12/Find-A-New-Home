@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
 
         // player의 움직임 컴포넌트를 비활성화
         GameObject player = GameObject.FindWithTag("Player");
+        player.GetComponent<Collider>().enabled = false;
         player.GetComponent<Movement>().enabled = false;
         player.GetComponent<SwipeManager>().enabled = false;
 
