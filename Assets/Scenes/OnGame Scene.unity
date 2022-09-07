@@ -2450,11 +2450,11 @@ MonoBehaviour:
   ZPos: 100
   coinMinCount: 5
   coinMaxCount: 20
-  obsMinInterval: 0.5
+  obsMinInterval: 0.7
   obsMaxInterval: 1
   coinInterval: 0.1
-  obsSpawnProbability: 0.8
-  coinSpawnProbability: 0.02
+  obsSpawnProbability: 0.85
+  coinSpawnProbability: 0.05
   coinLowHeightProbability: 0.05
   coinHighHeightProbability: 0.05
   coinZeroHeightIdx: 5

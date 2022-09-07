@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 [System.Serializable]
 
@@ -11,8 +13,9 @@ public class SwipeManager : MonoBehaviour
 {
     private Touch playerTouch;
     private Vector2 startPos, currentPos, touchDif;
-    private float swipeSensitivity = 120f;
+    private float swipeSensitivity = 100f;
     public Swipe swipeDirection;
+    private bool movedOnce = false;
 
     private List<int> boundaryAngles = new List<int> {60, 150, 210, 300};
         private void Awake()
@@ -31,13 +34,18 @@ public class SwipeManager : MonoBehaviour
         if (Touch.activeFingers.Count > 0)
         {
             playerTouch = Touch.activeFingers[0].currentTouch;
-            if (playerTouch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+            if (playerTouch.phase == TouchPhase.Began)
             {
                 startPos = playerTouch.screenPosition;
             }
-            else if (playerTouch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
+            else if (playerTouch.phase == TouchPhase.Moved)
             {
-                CalculateSwipe();
+                if (!movedOnce) CalculateSwipe();
+                else swipeDirection = Swipe.None;
+            }
+            else if (playerTouch.phase == TouchPhase.Ended)
+            {
+                movedOnce = false;
             }
         }
         else
@@ -68,6 +76,8 @@ public class SwipeManager : MonoBehaviour
             {
                 swipeDirection = Swipe.Left;
             }
+
+            movedOnce = true;
         }
         //터치.
         else
@@ -76,4 +86,6 @@ public class SwipeManager : MonoBehaviour
         }
         //Debug.Log($"Swipe: {swipeDirection}");
     }
+    
+    
 }
