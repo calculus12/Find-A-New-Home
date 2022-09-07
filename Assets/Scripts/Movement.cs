@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     public bool InJump, InFall, InRoll, InRecovery;
     private float PauseDelay, DodgeDelay;
     public SwipeManager swipeManager;
-    [SerializeField] private float delayConstant = 0.1f;
+    [SerializeField] private float delayConstant = 0.05f;
     private void Awake()
     {
         playerControls = new PlayerControls();

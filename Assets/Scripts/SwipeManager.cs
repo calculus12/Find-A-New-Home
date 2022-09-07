@@ -13,7 +13,7 @@ public class SwipeManager : MonoBehaviour
 {
     private Touch playerTouch;
     private Vector2 startPos, currentPos, touchDif;
-    private float swipeSensitivity = 100f;
+    private float swipeSensitivity = 50f;
     public Swipe swipeDirection;
     private bool movedOnce = false;
 
