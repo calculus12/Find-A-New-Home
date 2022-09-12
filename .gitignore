@@ -62,7 +62,7 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Downlaod Assets
-**/Buttons/
+**/Buttons icon/
 **/CokeCanModels/
 **/Cans opened pack/
 **/CrowArt \- PBR Cardboard Box/
