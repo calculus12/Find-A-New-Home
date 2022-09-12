@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    public enum ObjType {box, can, reef, seagull, coin};
+    public enum ObjType {box, can, reef, halfReef, seagull, coin};
     public ObjType type;
     public float speed;
     public int count; // 초기 생성 개수

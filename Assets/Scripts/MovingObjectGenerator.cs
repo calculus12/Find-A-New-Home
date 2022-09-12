@@ -34,7 +34,7 @@ public class MovingObjectGenerator : MonoBehaviour
     int[] coinHeightIdx; // 각 라인 별 코인 위치
     bool[,] isOccupied; // 각 라인 별 자리 차지 여부
 
-    const int SPACE_CNT = 3; // 상단, 중단, 하단
+    const int spaceCount = 3; // 상단, 중단, 하단
 
     void Awake() {
         // 싱글톤
@@ -48,7 +48,7 @@ public class MovingObjectGenerator : MonoBehaviour
         obsTypeCount = Enum.GetNames(typeof(MovingObject.ObjType)).Length - 1;
         lineCount = XPoses.Length;
         coinHeightIdx = Enumerable.Repeat<int>(coinZeroHeightIdx, lineCount).ToArray<int>(); 
-        isOccupied = new bool[lineCount, SPACE_CNT];
+        isOccupied = new bool[lineCount, spaceCount];
     }
 
     void Start() {
@@ -80,7 +80,7 @@ public class MovingObjectGenerator : MonoBehaviour
     // 장애물 생성
     void GeneratedObses() {
         for (int i = 0; i < lineCount; i++) {
-            for (int j = 0; j < SPACE_CNT; j++) {
+            for (int j = 0; j < spaceCount; j++) {
                 isOccupied[i, j] = false;
             }
         }
@@ -95,7 +95,7 @@ public class MovingObjectGenerator : MonoBehaviour
             MovingObject.ObjType type = (MovingObject.ObjType)UnityEngine.Random.Range(0, obsTypeCount);
             obj = MovingObjectPool.instance.GetObj(type);
             Obstacle obs = obj as Obstacle;
-            Debug.Assert(obs != null, "SpawningMovingObjectPool에서 가져온 오브젝트가 장애물이 아닙니다");
+            Debug.Assert(obs != null, "MovingObjectPool에서 가져온 오브젝트가 장애물이 아닙니다");
 
             // 장애물 위치 설정
             obs.transform.position = new Vector3(XPoses[i], obs.yPos, ZPos);
@@ -107,7 +107,7 @@ public class MovingObjectGenerator : MonoBehaviour
         // 모든 공간이 장애물로 막혀있다면 마지막 라인의 장애물을 없앰
         if (!IsValid()) {
             MovingObjectPool.instance.ReturnObj(obj);
-            for (int i = 0; i < SPACE_CNT; i++) {
+            for (int i = 0; i < spaceCount; i++) {
                 isOccupied[lineCount - 1, i] = false;
             }
         }
@@ -116,7 +116,7 @@ public class MovingObjectGenerator : MonoBehaviour
     // 모든 공간이 장애물로 막혀있다면 return false
     bool IsValid() {
         for (int i = 0; i < lineCount; i++) {
-            for (int j = 0; j < SPACE_CNT; j++) {
+            for (int j = 0; j < spaceCount; j++) {
                 if (!isOccupied[i, j]) {
                     return true;
                 }
@@ -188,7 +188,7 @@ public class MovingObjectGenerator : MonoBehaviour
         // 코인 생성
         MovingObject obj = MovingObjectPool.instance.GetObj(Obstacle.ObjType.coin);
         Coin coin = obj as Coin;
-        Debug.Assert(coin != null, "SpawningMovingObjectPool에서 가져온 오브젝트가 코인이 아닙니다");
+        Debug.Assert(coin != null, "MovingObjectPool에서 가져온 오브젝트가 코인이 아닙니다");
         
         // 위치 설정
         coin.transform.position = new Vector3(XPoses[lineNum], coin.yPoses[yPosIdx], ZPos);
