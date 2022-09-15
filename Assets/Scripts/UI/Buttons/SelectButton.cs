@@ -9,6 +9,7 @@ public class SelectButton : MonoBehaviour, ButtonBase
 
     public void OnClicked()
     {
+        SoundManager.instance.PlayClickSound();
         characterSelectController.SetCharacter();
         characterScreen.SetActive(false);
     }

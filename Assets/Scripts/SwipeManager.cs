@@ -60,6 +60,7 @@ public class SwipeManager : MonoBehaviour
         touchDif = (currentPos - startPos);
         if(Mathf.Abs(touchDif.y) > swipeSensitivity || Mathf.Abs(touchDif.x) > swipeSensitivity)
         {
+
             if (touchDif.y > 0 && Mathf.Abs(touchDif.y) > Mathf.Abs(touchDif.x))
             {
                 swipeDirection = Swipe.Up;

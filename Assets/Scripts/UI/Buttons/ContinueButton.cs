@@ -10,6 +10,7 @@ public class ContinueButton : MonoBehaviour, ButtonBase
 
     public void OnClicked()
     {
+        SoundManager.instance.PlayClickSound();
         GameManager.Instance.TogglePause();
         pausePanel.SetActive(false);
     }

@@ -73,6 +73,7 @@ public class Movement : MonoBehaviour
         {
             if (mSide == SIDE.MID)
             {
+                SoundManager.instance.PlaySlideSound();
                 mSide = SIDE.LEFT;
                 NewXPos = -XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
@@ -80,6 +81,7 @@ public class Movement : MonoBehaviour
             }
             else if (mSide == SIDE.RIGHT)
             {
+                SoundManager.instance.PlaySlideSound();
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_B", 0.1f);
@@ -90,6 +92,7 @@ public class Movement : MonoBehaviour
         {
             if (mSide == SIDE.MID)
             {
+                SoundManager.instance.PlaySlideSound();
                 mSide = SIDE.RIGHT;
                 NewXPos = XValue;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
@@ -97,6 +100,7 @@ public class Movement : MonoBehaviour
             }
             else if (mSide == SIDE.LEFT)
             {
+                SoundManager.instance.PlaySlideSound();
                 mSide = SIDE.MID;
                 NewXPos = 0f;
                 mAnimator.CrossFadeInFixedTime("Idle_C", 0.1f);
@@ -161,6 +165,7 @@ public class Movement : MonoBehaviour
         // 현재 점프 중이거나 떨어지는 중이 아니면 입력에 따라 점프 실행
         if (!(InJump || InFall || InRoll) && (playerControls.Player.Jump.triggered || swipeManager.swipeDirection == Swipe.Up))
         {
+            SoundManager.instance.PlayJumpSound();
             Y = JumpPower;
             InJump = true;
             InRoll = false;
