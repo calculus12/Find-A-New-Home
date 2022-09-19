@@ -15,6 +15,7 @@ public class SoundButton : MonoBehaviour, ButtonBase
 
     public void OnClicked()
     {
+        SoundManager.instance.PlayClickSound();
         if (isSoundOff)
         {
             image.sprite = soundOnImage;

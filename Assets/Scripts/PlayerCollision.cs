@@ -20,6 +20,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         //player die function
         if(other.tag == "Obstacle"){
+            SoundManager.instance.PlayCollideSound();
             // 플레이어 게임오버 움직임
             StartCoroutine(PlayerDieMovement());
 
@@ -31,6 +32,7 @@ public class PlayerCollision : MonoBehaviour
         else if (other.tag == "Coin") {
             MovingObjectPool.instance.ReturnObj(other.GetComponent<Coin>());
             scoreManager.IncreaseCoin();
+            SoundManager.instance.PlayCoinSound();
         }
     }
     

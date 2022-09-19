@@ -6,6 +6,7 @@ public class RestartButton : MonoBehaviour, ButtonBase
 {
     public void OnClicked()
     {
+        SoundManager.instance.PlayClickSound();
         GameManager.Instance.RestartGame();
     }
 }

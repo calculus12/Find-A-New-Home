@@ -7,6 +7,7 @@ public class StopButton : MonoBehaviour, ButtonBase
 {
     public void OnClicked()
     {
+        SoundManager.instance.PlayClickSound();
         GameManager.Instance.StopGame();
     }
 }
