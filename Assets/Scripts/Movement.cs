@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 [System.Serializable]
 
@@ -27,7 +23,7 @@ public class Movement : MonoBehaviour
     public bool InJump, InFall, InRoll, InRecovery;
     private float PauseDelay, DodgeDelay;
     public SwipeManager swipeManager;
-    [SerializeField] private float delayConstant = 0.05f;
+    [SerializeField] private float delayConstant = 0.016f;
     private void Awake()
     {
         playerControls = new PlayerControls();
@@ -47,7 +43,6 @@ public class Movement : MonoBehaviour
         transform.position = new Vector3(0f, 0f, 0f);
         Y = 0f;
         PauseDelay = 0f;
-        DodgeDelay = 0f;
     }
 
     void FixedUpdate()
@@ -107,7 +102,7 @@ public class Movement : MonoBehaviour
         // 점프 및 다이빙 로직
 
         // 바다에 가까우면 y=0 및 상태 초기화 
-        if (Mathf.Abs(transform.position.y) < 0.15f)
+        if (Mathf.Abs(transform.position.y + 0.3f) < 0.15f)
         {
             if (InFall || InRecovery)
             {

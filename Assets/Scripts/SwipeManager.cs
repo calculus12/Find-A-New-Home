@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -13,11 +11,11 @@ public class SwipeManager : MonoBehaviour
 {
     private Touch playerTouch;
     private Vector2 startPos, currentPos, touchDif;
-    private float swipeSensitivity = 50f;
+    private float swipeSensitivity = 60f;
     public Swipe swipeDirection;
     private bool movedOnce = false;
 
-    private List<int> boundaryAngles = new List<int> {60, 150, 210, 300};
+    private List<int> boundaryAngles = new List<int> {50, 130, 230, 310};
         private void Awake()
     {
         EnhancedTouchSupport.Enable();
@@ -33,12 +31,12 @@ public class SwipeManager : MonoBehaviour
     {
         if (Touch.activeFingers.Count > 0)
         {
-            playerTouch = Touch.activeFingers[0].currentTouch;
+            playerTouch = Touch.activeTouches[0];
             if (playerTouch.phase == TouchPhase.Began)
             {
                 startPos = playerTouch.screenPosition;
             }
-            else if (playerTouch.phase == TouchPhase.Moved)
+            else if (playerTouch.phase == TouchPhase.Moved || playerTouch.phase == TouchPhase.Stationary)
             {
                 if (!movedOnce) CalculateSwipe();
                 else swipeDirection = Swipe.None;
@@ -51,6 +49,7 @@ public class SwipeManager : MonoBehaviour
         else
         {
             swipeDirection = Swipe.None;
+            movedOnce = false;
         }
     }
 
@@ -58,23 +57,28 @@ public class SwipeManager : MonoBehaviour
     {
         currentPos = playerTouch.screenPosition;
         touchDif = (currentPos - startPos);
-        if(Mathf.Abs(touchDif.y) > swipeSensitivity || Mathf.Abs(touchDif.x) > swipeSensitivity)
+        var swipeAngle = Mathf.Atan2(currentPos.y - startPos.y, currentPos.x - startPos.x) * 180 / Mathf.PI;
+        if (swipeAngle < 0)
         {
-            if (touchDif.y > 0 && Mathf.Abs(touchDif.y) > Mathf.Abs(touchDif.x))
+            swipeAngle += 360;
+        }
+        if(touchDif.magnitude > swipeSensitivity)
+        {
+            if (swipeAngle > boundaryAngles[0] && swipeAngle <= boundaryAngles[1])
             {
                 swipeDirection = Swipe.Up;
             }
-            else if (touchDif.y < 0 && Mathf.Abs(touchDif.y) > Mathf.Abs(touchDif.x))
+            else if(swipeAngle > boundaryAngles[1] && swipeAngle <= boundaryAngles[2])
+            {
+                swipeDirection = Swipe.Left;
+            }
+            else if (swipeAngle > boundaryAngles[2] && swipeAngle <= boundaryAngles[3])
             {
                 swipeDirection = Swipe.Down;
             }
-            else if(touchDif.x > 0 && Mathf.Abs(touchDif.y) < Mathf.Abs(touchDif.x))
+            else
             {
                 swipeDirection = Swipe.Right;
-            }
-            else if(touchDif.x < 0 && Mathf.Abs(touchDif.y) < Mathf.Abs(touchDif.x))
-            {
-                swipeDirection = Swipe.Left;
             }
 
             movedOnce = true;
