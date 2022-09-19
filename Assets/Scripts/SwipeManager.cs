@@ -16,9 +16,7 @@ public class SwipeManager : MonoBehaviour
     private float swipeSensitivity = 50f;
     public Swipe swipeDirection;
     private bool movedOnce = false;
-
-    private List<int> boundaryAngles = new List<int> {60, 150, 210, 300};
-        private void Awake()
+    private void Awake()
     {
         EnhancedTouchSupport.Enable();
     }
@@ -26,6 +24,7 @@ public class SwipeManager : MonoBehaviour
     {
         startPos = Vector2.zero;
         currentPos = Vector2.zero;
+        touchDif = Vector2.zero;
     }
 
     // https://gamedev-resources.com/implementing-touch-with-input-systems-enhanced-touch-api/
@@ -40,11 +39,24 @@ public class SwipeManager : MonoBehaviour
             }
             else if (playerTouch.phase == TouchPhase.Moved)
             {
-                if (!movedOnce) CalculateSwipe();
+                if (!movedOnce)
+                {
+                    currentPos = playerTouch.screenPosition;
+                    touchDif = (currentPos - startPos);
+                    if (Mathf.Abs(touchDif.y) > swipeSensitivity || Mathf.Abs(touchDif.x) > swipeSensitivity)
+                    {
+                        CalculateSwipe();
+                        movedOnce = true;
+                    }
+                }
                 else swipeDirection = Swipe.None;
             }
             else if (playerTouch.phase == TouchPhase.Ended)
             {
+                if (!movedOnce)
+                {
+                    CalculateSwipe();
+                }
                 movedOnce = false;
             }
         }
@@ -56,36 +68,22 @@ public class SwipeManager : MonoBehaviour
 
     void CalculateSwipe()
     {
-        currentPos = playerTouch.screenPosition;
-        touchDif = (currentPos - startPos);
-        if(Mathf.Abs(touchDif.y) > swipeSensitivity || Mathf.Abs(touchDif.x) > swipeSensitivity)
+        if (touchDif.y >= 0 && Mathf.Abs(touchDif.y) >= Mathf.Abs(touchDif.x))
         {
-            if (touchDif.y > 0 && Mathf.Abs(touchDif.y) > Mathf.Abs(touchDif.x))
-            {
-                swipeDirection = Swipe.Up;
-            }
-            else if (touchDif.y < 0 && Mathf.Abs(touchDif.y) > Mathf.Abs(touchDif.x))
-            {
-                swipeDirection = Swipe.Down;
-            }
-            else if(touchDif.x > 0 && Mathf.Abs(touchDif.y) < Mathf.Abs(touchDif.x))
-            {
-                swipeDirection = Swipe.Right;
-            }
-            else if(touchDif.x < 0 && Mathf.Abs(touchDif.y) < Mathf.Abs(touchDif.x))
-            {
-                swipeDirection = Swipe.Left;
-            }
-
-            movedOnce = true;
+            swipeDirection = Swipe.Up;
         }
-        //터치.
-        else
+        else if (touchDif.y < 0 && Mathf.Abs(touchDif.y) >= Mathf.Abs(touchDif.x))
         {
-            swipeDirection = Swipe.None;
+            swipeDirection = Swipe.Down;
         }
-        //Debug.Log($"Swipe: {swipeDirection}");
+        else if (touchDif.x > 0 && Mathf.Abs(touchDif.y) < Mathf.Abs(touchDif.x))
+        {
+            swipeDirection = Swipe.Right;
+        }
+        else if (touchDif.x < 0 && Mathf.Abs(touchDif.y) < Mathf.Abs(touchDif.x))
+        {
+            swipeDirection = Swipe.Left;
+        }
+        // Debug.Log($"Swipe: {swipeDirection}");
     }
-    
-    
 }
