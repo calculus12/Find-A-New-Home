@@ -13,6 +13,7 @@ public class CharacterChangeButton : MonoBehaviour, ButtonBase
     private string textWhenSelectionActive = "취소";
     public void OnClicked()
     {
+        SoundManager.instance.PlayClickSound();
         // button 
         if (characterScreen.activeSelf)
         {
