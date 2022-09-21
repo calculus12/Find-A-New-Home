@@ -33,6 +33,9 @@ public class PrefsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        // 기본 캐릭터 소유
+        PlayerPrefs.SetInt("Penguin", 1);
     }
 
     /// <summary>
@@ -71,6 +74,27 @@ public class PrefsManager : MonoBehaviour
     {
         if (bestScore < 0) return;
         PlayerPrefs.SetInt("best_score", bestScore);
+    }
+    
+    /// <summary>
+    /// 캐릭터 보유 유무를 반환하는 함수
+    /// </summary>
+    /// <param name="characterName">캐릭터 이름</param>
+    /// <returns>캐릭터를 보유하고 있으면 [true], 아니면 [false]를 반환 </returns>
+    public bool GetCharacterOwn(string characterName)
+    {
+        bool res = PlayerPrefs.GetInt(characterName, 0) != 0;
+        return res;
+    }
+
+    /// <summary>
+    /// 캐릭터 보유 유무를 수정하는 함수
+    /// </summary>
+    /// <param name="characterName">캐릭터 이름</param>
+    /// <param name="isOwn">보유 유무</param>
+    public void SetCharacterOwn(string characterName, bool isOwn)
+    {
+        PlayerPrefs.SetInt(characterName, isOwn ? 1 : 0);
     }
 
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,55 @@ using UnityEngine;
 public class CharacterSelectController : MonoBehaviour
 {
     private List<GameObject> characters = new List<GameObject>();
+    [SerializeField] private GameObject selectButton;
+    [SerializeField] private GameObject purchaseButton;
 
-    int tempCharacter = 0;
+    private readonly Dictionary<string, Dictionary<string, object>> characterInfo =
+        new Dictionary<string, Dictionary<string, object>>
+        {
+            {
+                "Penguin", 
+                new Dictionary<string, object>
+                {
+                    {"name", "Penguin"},
+                    {"price", 0},
+                }
+            },
+            {
+                
+                "Walrus", 
+                new Dictionary<string, object>
+                {
+                    {"name", "Walrus"},
+                    {"price", 20000},
+                }
+            },
+            {
+                "SeaLion", 
+                new Dictionary<string, object>
+                {
+                    {"name", "SeaLion"},
+                    {"price", 30000},
+                }
+            },
+            {
+                "PolarBear", 
+                new Dictionary<string, object>
+                {
+                    {"name", "PolarBear"},
+                    {"price", 10000},
+                }
+            },
+        };
+    
+    int tempCharacterIndex = 0;
     int currentCharacterIndex = 0;
     string currentCharacterName = "Penguin";
+
+    public Dictionary<String, object> CurCharacter
+    {
+        get { return characterInfo[characters[tempCharacterIndex].name]; }
+    }
 
     private void Awake()
     {
@@ -26,29 +72,44 @@ public class CharacterSelectController : MonoBehaviour
     private void Start()
     {
         currentCharacterIndex = GameManager.Instance.characterIndex;
-        tempCharacter = GameManager.Instance.characterIndex;
+        tempCharacterIndex = GameManager.Instance.characterIndex;
 
         characters[currentCharacterIndex].SetActive(true);
     }
 
     /// <summary>
     /// Left Button과 Right Button 눌렀을 때 캐릭터 임시 변경
+    /// 캐릭터를 소유하고 있지 않다면 선택 버튼이 비활성화 및 가격 표시
     /// </summary>
-    /// <param name="isNext">Righut Button을 눌렀을 때 true</param>
+    /// <param name="isNext">Right Button을 눌렀을 때 true, Left Button을 눌렀을 때 false</param>
     public void ChangeCharacter(bool isNext)
     {
-        characters[tempCharacter].SetActive(false);
+        characters[tempCharacterIndex].SetActive(false);
 
         if (isNext)
         {
-            tempCharacter = (tempCharacter + 1) % characters.Count;
+            tempCharacterIndex = (tempCharacterIndex + 1) % characters.Count;
         }
         else
         {
-            tempCharacter = tempCharacter == 0 ? characters.Count - 1 : tempCharacter - 1;
+            tempCharacterIndex = tempCharacterIndex == 0 ? characters.Count - 1 : tempCharacterIndex - 1;
         }
 
-        characters[tempCharacter].SetActive(true);
+        characters[tempCharacterIndex].SetActive(true);
+        
+        // 캐릭터를 갖고 있지 않다면 선택 버튼 비활성화 및 구매 버튼 활성화
+        if (!PrefsManager.Instance.GetCharacterOwn(characters[tempCharacterIndex].name))
+        {
+            selectButton.SetActive(false);
+            purchaseButton.SetActive(true);
+            purchaseButton.GetComponent<PurchaseButton>().SetInfo();
+        }
+        // 캐릭터를 갖고 있다면 선택 버튼 활성화 및 구매 버튼 비활성화
+        else
+        {
+            selectButton.SetActive(true);
+            purchaseButton.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -56,8 +117,8 @@ public class CharacterSelectController : MonoBehaviour
     /// </summary>
     public void SetCharacter()
     {
-        characters[tempCharacter].SetActive(false);
-        currentCharacterIndex = tempCharacter;
+        characters[tempCharacterIndex].SetActive(false);
+        currentCharacterIndex = tempCharacterIndex;
         currentCharacterName = characters[currentCharacterIndex].name;
 
         // 게임 매니저에 캐릭터 이름을 저장해서 게임 플레이 씬으로 넘어갔을 때
@@ -74,8 +135,8 @@ public class CharacterSelectController : MonoBehaviour
     /// </summary>
     public void CancelChange()
     {
-        characters[tempCharacter].SetActive(false);
+        characters[tempCharacterIndex].SetActive(false);
         characters[currentCharacterIndex].SetActive(true);
-        tempCharacter = currentCharacterIndex;
+        tempCharacterIndex = currentCharacterIndex;
     }
 }
