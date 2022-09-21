@@ -8,6 +8,8 @@ public class CharacterChangeButton : MonoBehaviour, ButtonBase
     [SerializeField] GameObject characterScreen;
     [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] CharacterSelectController characterSelectController;
+    [SerializeField] private GameObject characterSelectButton;
+    [SerializeField] private GameObject characterPurchaseButton;
 
     private string textWhenSelectionInactive = "캐릭터 변경하기!";
     private string textWhenSelectionActive = "취소";
@@ -24,6 +26,8 @@ public class CharacterChangeButton : MonoBehaviour, ButtonBase
         else
         {
             characterScreen.SetActive(true);
+            characterSelectButton.SetActive(true);
+            characterPurchaseButton.SetActive(false);
             changeTextWhenSelectionActive(true);
         }
 
